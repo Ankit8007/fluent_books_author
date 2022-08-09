@@ -1,4 +1,5 @@
 
+import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/register/CreateAccount.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,7 @@ class _LoginState extends State<Login> {
                     label: log_in,
                     labelStyle: txt_20_white,
                     boxDeco: boxDecoration(color: blue, radius: s10),
-                    ontap: () {},
+                    ontap: () => Navigator.pushNamed(context, Fragment.routeName),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

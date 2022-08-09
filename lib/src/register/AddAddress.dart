@@ -1,3 +1,4 @@
+import 'package:fluent_books_author/src/register/PaymentInfo.dart';
 import 'package:flutter/material.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -75,7 +76,7 @@ class _AddAddressState extends State<AddAddress> {
                       boxDeco: boxDecoration(color: blue, radius: s10),
                       marginVertical: s40,
                       ontap: (){
-                        Navigator.pushNamed(context, AddCardDetails.routeName);
+                        Navigator.pushNamed(context, PaymentInfo.routeName);
                       },
                     ),
                     // Row(

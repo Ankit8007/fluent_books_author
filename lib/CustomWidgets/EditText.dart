@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../component/fonts.dart';
 import '../component/size.dart';
 import 'TextView.dart';
 
@@ -28,7 +29,7 @@ class EditText extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
-      this.marginBottom, this.hintStyle, this.inputType})
+      this.marginBottom, this.hintStyle, this.inputType, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom, this.preChild, this.postChild})
       : super(key: key);
   final int? maxLines;
   final TextStyle? style;
@@ -56,7 +57,15 @@ class EditText extends StatelessWidget {
   final double? marginRight;
   final double? marginBottom;
   final TextInputType? inputType;
-
+  final double? padding;
+  final double? paddingVertical;
+  final double? paddingHorizontal;
+  final double? paddingTop;
+  final double? paddingLeft;
+  final double? paddingRight;
+  final double? paddingBottom;
+  final Widget? preChild;
+  final Widget? postChild;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,31 +82,50 @@ class EditText extends StatelessWidget {
                 ? TextView(
                     label ?? '',
                     style: labelStyle,
-                    marginBottom: s10,
+                    marginBottom: s5,
                   )
                 : null,
           ),
           Container(
             decoration: boxDeco,
-            child: TextField(
-              // style: ,
-              // onTap: ,
-              // maxLines: ,
-              // readOnly: ,
-              // textAlign: ,
-              // minLines: ,
-              // maxLength: ,
-              // keyboardType: ,
-              // onChanged: ,
-              // enabled: ,
-              decoration: InputDecoration(
-                  hintText: hint ?? '',
-                hintStyle: hintStyle,
-                border: InputBorder.none,
-              ),
-              keyboardType: inputType,
-              obscureText: secureText ?? false,
-              controller: controller,
+            padding: EdgeInsets.only(
+              top: padding ?? paddingVertical ?? paddingTop ?? 0,
+              bottom: padding ?? paddingVertical ?? paddingBottom ?? 0,
+              left: padding ?? paddingHorizontal ?? paddingLeft ?? s20,
+              right: padding ?? paddingHorizontal ?? paddingRight ?? s20,
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  child: preChild,
+                ),
+                Expanded(
+                  child: TextField(
+                    style: txt_14_black,
+                    // onTap: ,
+                    // maxLines: ,
+                    readOnly: readOnly ?? false,
+                    // textAlign: ,
+                    // minLines: ,
+                    // maxLength: ,
+                    // keyboardType: ,
+                    // onChanged: ,
+                    // enabled: ,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: hint ?? '',
+                      hintStyle: hintStyle ?? txt_14_hint,
+                      border: InputBorder.none,
+                    ),
+                    keyboardType: inputType,
+                    obscureText: secureText ?? false,
+                    controller: controller,
+                  ),
+                ),
+                SizedBox(
+                  child: postChild,
+                ),
+              ],
             ),
           ),
         ],

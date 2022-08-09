@@ -84,3 +84,5 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
     return boxDecoration(color: white, radius: s10);
   }
 }
+
+
