@@ -42,12 +42,12 @@ class _LanguagesState extends State<Languages> {
                 padding: EdgeInsets.all(s15),
                 child: Column(
                   children: [
-                    header('Mother Tongue'),
+                    header('Choose Your Mother Tongue'),
                     DropDown(hint: english,
                       boxDeco: decoration(),
                       marginBottom: s20,
                     ),
-                    header('Other Languages', child: ImageView(Img.addCirBlueIcon,
+                    header('Your Other Languages', child: ImageView(Img.addCirBlueIcon,
                     size: s20, onTap: (){},
                     )),
                     ListView.separated(
@@ -68,6 +68,15 @@ class _LanguagesState extends State<Languages> {
                     color: blue,
                   radius: s10,
                 ),
+              ),
+              Button(label: 'Cancel',
+                labelStyle: txt_16_black,
+                marginHorizontal: s15,
+                marginBottom: s15,
+                boxDeco: boxDecoration(
+                  radius: s10,
+                  borderColor: black
+                ),
               )
             ],
           ),
@@ -82,7 +91,7 @@ class _LanguagesState extends State<Languages> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TextView(title,style: txt_14_blue_600,),
+          TextView(title,style: txt_14_black_600,),
           SizedBox(child: child,),
         ],
       ),

@@ -36,123 +36,82 @@ class _EditProfileState extends State<EditProfile> {
           child: Column(
             children: [
               AppBarView(
-                preIcon: Img.menuIcon,
+                preIcon: Img.backIOSWhiteIcon,
                 title: myProfile,
                 backgroundColor: blue,
                 preTap: () {
-                  _key.currentState!.openDrawer();
+                  Navigator.pop(context);
                 },
               ),
               Expanded(
                   child: SingleChildScrollView(
-                padding: EdgeInsets.all(s20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                    padding: EdgeInsets.all(s20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          flex: 4,
-                          child: Avatar2(
-                            img: Img.avatar,
-                            size: s20 * 3,
-                            name: 'Olivia Rodrigo',
-                            style: txt_14_black_500,
-                            paddingBottom: s15,
-                            // padding: s20,
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Avatar2(
+                                img: Img.avatar,
+                                size: s20 * 3,
+                                name: 'Olivia Rodrigo',
+                                style: txt_14_black_500,
+                                paddingBottom: s15,
+                                // padding: s20,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    EditCard(
-                      label: 'Name',
-                      inputType: TextInputType.name,
-                      hint: 'Name',
-                      txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
-                    ),
-                    EditCard(
-                      label: 'Email',
-                      inputType: TextInputType.emailAddress,
-                      hint: 'Email',
-                      txtCtrl: TextEditingController(text: 'Olivia@email.com'),
-                    ),
-                    EditCard(
-                      label: 'Phone Number',
-                      inputType: TextInputType.phone,
-                      hint: 'Phone Number',
-                      txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
-                    ),
-                    EditCard(
-                      label: 'Address',
-                      inputType: TextInputType.streetAddress,
-                      hint: 'Address',
-                      txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
-                    ),
-                    EditCard(
-                      label: 'Description of translator',
-                      inputType: TextInputType.multiline,
-                      hint: 'Name',
-                      txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
-                    ),
-                    SizedBox(
-                      height: s10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextView(
-                          'Qualification documents',
-                          style: txt_12_blue_600,
+                        EditCard(
+                          label: 'Name',
+                          inputType: TextInputType.name,
+                          hint: 'Name',
+                          txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
                         ),
-                        ImageView(
-                          Img.addCirBlueIcon,
-                          size: 20,
-                          onTap: () {},
+                        EditCard(
+                          label: 'Email',
+                          inputType: TextInputType.emailAddress,
+                          hint: 'Email',
+                          txtCtrl: TextEditingController(text: 'Olivia@email.com'),
+                        ),
+                        EditCard(
+                          label: 'Phone Number',
+                          inputType: TextInputType.phone,
+                          hint: 'Phone Number',
+                          txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
+                        ),
+                        EditCard(
+                          label: 'Address',
+                          inputType: TextInputType.streetAddress,
+                          hint: 'Address',
+                          txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
+                        ),
+                        EditCard(
+                          label: 'Author blurb',
+                          inputType: TextInputType.multiline,
+                          hint: 'Name',
+                          txtCtrl: TextEditingController(text: 'Olivia Rodrigo'),
+                        ),
+                        SizedBox(
+                          height: s10,
+                        ),
+                        Button(
+                          label: 'save',
+                          labelStyle: txt_16_white,
+                          boxDeco: boxDecoration(color: blue, radius: s10),
                         )
                       ],
                     ),
-                    SizedBox(
-                      height: s20 * 6,
-                      child: ListView.separated(
-                          padding: EdgeInsets.symmetric(vertical: s10),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => Stack(
-                                children: [
-                                  ImageView(
-                                    docList[index],
-                                    fit: BoxFit.fill,
-                                    margin: s5,
-                                    //boxDeco: boxDecoration(borderColor: grey100, radius: s10),
-                                  ),
-                                  Positioned(
-                                      top: 0,
-                                      right: 0,
-                                      child: ImageView(
-                                        Img.closeBlueCir,
-                                        size: s15,
-                                        onTap: () {},
-                                      ))
-                                ],
-                              ),
-                          separatorBuilder: (context, index) =>
-                              SizedBox(width: s10),
-                          itemCount: docList.length),
-                    ),
-                    Button(
-                      label: 'save',
-                      labelStyle: txt_16_white,
-                      boxDeco: boxDecoration(color: blue, radius: s10),
-                    )
-                  ],
-                ),
-              ))
+                  ))
             ],
           ),
         ),
       ),
-      drawer: const SideMenu(),
     );
   }
+
 }
 
 class EditCard extends StatelessWidget {
@@ -168,7 +127,7 @@ class EditCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return EditText(
       label: label,
-      labelStyle: txt_12_blue_600,
+      labelStyle: txt_12_black_600,
       controller: txtCtrl,
       hint: hint,
       inputType: inputType,

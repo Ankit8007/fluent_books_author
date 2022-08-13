@@ -30,67 +30,74 @@ class _YourLanguageState extends State<YourLanguage> {
     return Scaffold(
       backgroundColor: greenishCyan,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(s15),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: ImageView(Img.logoImg,size: s15 * 8,)),
-
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextView(yourMotherTongue,style: txt_18_white_600_CM,marginTop: s40 *2,)),
-
-                    DropDown(hint: 'Language',
-                      boxDeco: editTextDecoration(),
-                      marginTop: s20 * 2,
-                    ),
-
                     Padding(
-                      padding: EdgeInsets.only(top: s20 * 2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      padding: EdgeInsets.all(s15),
+                      child: Column(
                         children: [
-                          TextView(yourOtherLangs,style: txt_18_white_600_CM,),
-                          ImageBtn(
-                            childImg: Icon(Icons.add,color: white,size: s15 * 2,),
-                            padding: s5,
-                            boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true) ,
-                          )
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: ImageView(Img.logoImg,size: s15 * 8,)),
+
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: TextView(yourMotherTongue,style: txt_18_white_600_CM,marginTop: s40 *2,)),
+
+                          DropDown(hint: 'Language',
+                            boxDeco: editTextDecoration(),
+                            marginTop: s20 * 2,
+                          ),
+
+                          Padding(
+                            padding: EdgeInsets.only(top: s20 * 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                TextView(yourOtherLangs,style: txt_18_white_600_CM,),
+                                ImageBtn(
+                                  childImg: Icon(Icons.add,color: white,size: s15 * 2,),
+                                  padding: s5,
+                                  boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true) ,
+                                )
+                              ],
+                            ),
+                          ),
+
+
+                          DropDown(hint: 'Language',
+                            boxDeco: editTextDecoration(),
+                            marginTop: s20 * 2,
+                          ),
+
+
+
+                          Button(
+                            label: next,
+                            labelStyle: txt_16_white,
+                            boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
+                            marginVertical: s40,
+                            ontap: (){
+                              Navigator.pushNamed(context, QualificationDoc.routeName);
+                            },
+                          ),
                         ],
                       ),
                     ),
+                    //const Spacer(),
 
 
-                    DropDown(hint: 'Language',
-                      boxDeco: editTextDecoration(),
-                      marginTop: s20 * 2,
-                    ),
-
-
-
-                    Button(
-                      label: next,
-                      labelStyle: txt_16_white,
-                      boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
-                      marginVertical: s40,
-                      ontap: (){
-                        Navigator.pushNamed(context, QualificationDoc.routeName);
-                      },
-                    ),
                   ],
                 ),
               ),
-              //const Spacer(),
-
-              const BottomBanner(),
-            ],
-          ),
+            ),
+            const BottomBanner(),
+          ],
         ),
       ),
     );

@@ -12,7 +12,6 @@ import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
 import 'AddAddress.dart';
-import 'CreatePassword.dart';
 
 class AuthorBlurb extends StatefulWidget {
   const AuthorBlurb({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
 
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: TextView(authorBlurb,style: txt_20_white_600_CM,marginTop: s40,)),
+                      child: TextView(authorBlurb,style: txt_18_white_600_CM,marginTop: s40,)),
 
                   EditText(
                     hint: writeAboutYou,
@@ -54,8 +53,8 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
 
                   Button(
                     label: next,
-                    labelStyle: txt_20_white,
-                    boxDeco: boxDecoration(color: blue, radius: s10),
+                    labelStyle: txt_16_white,
+                    boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     marginVertical: s40,
                     ontap: (){
                       Navigator.pushNamed(context, AddAddress.routeName);
@@ -81,7 +80,7 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
     );
   }
   editTextDecoration(){
-    return boxDecoration(color: white, radius: s10);
+    return boxDecoration(color: white, radius: s10,giveShadow: true);
   }
 }
 

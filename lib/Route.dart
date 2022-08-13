@@ -1,4 +1,5 @@
 
+import 'package:fluent_books_author/src/EditProfil.dart';
 import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/Login.dart';
 import 'package:fluent_books_author/src/Splash.dart';
@@ -21,6 +22,17 @@ import 'package:fluent_books_author/src/register/YourLanguage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'src/AccountDetails.dart';
+import 'src/BookDetails.dart';
+import 'src/ChangePassword.dart';
+import 'src/CreateBook.dart';
+import 'src/Languages.dart';
+import 'src/Notifications.dart';
+import 'src/PaymentDetails.dart';
+import 'src/PrivacyPolicy.dart';
+import 'src/RequestExtendTime.dart';
+import 'src/TermsCondition.dart';
+
 final Map<String, WidgetBuilder> routes = {
   Splash.routeName:(context) => const Splash(),
   Login.routeName: (context) => const Login(),
@@ -41,4 +53,17 @@ final Map<String, WidgetBuilder> routes = {
   SelectChildLikes.routeName:(context)=> const SelectChildLikes(),
   SelectLanguages.routeName:(context)=> const SelectLanguages(),
   Fragment.routeName:(context)=> const Fragment(),
+  EditProfile.routeName:(context)=> const EditProfile(),
+
+  AccountDetails.routeName:(context)=> const AccountDetails(),
+  Notifications.routeName:(context)=> const Notifications(),
+  ChangePassword.routeName:(context)=> const ChangePassword(),
+  Languages.routeName:(context)=> const Languages(),
+  PrivacyPolicy.routeName:(context)=> const PrivacyPolicy(),
+  TermsCondition.routeName:(context)=> const TermsCondition(),
+  BookDetails.routeName:(context)=> const BookDetails(),
+  PaymentDetails.routeName:(context)=> const PaymentDetails(),
+  EditProfile.routeName:(context)=> const EditProfile(),
+  CreateBook.routeName:(context)=> const CreateBook(),
+  RequestExtendTime.routeName:(context)=> const RequestExtendTime(),
 };

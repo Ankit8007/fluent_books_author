@@ -43,84 +43,67 @@ class _ProfileState extends State<Profile> {
               ),
               Expanded(
                   child: SingleChildScrollView(
-                padding: EdgeInsets.all(s15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                    padding: EdgeInsets.all(s15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          flex: 4,
-                          child: Avatar2(
-                            img: Img.avatar,
-                            size: s20 * 3,
-                            name: 'Olivia Rodrigo',
-                            style: txt_14_black_500,
-                            // padding: s20,
-                          ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            children: [
-                              TextView(
-                                'Edit',
-                                style: txt_10_black,
-                                onTap: () => Navigator.pushNamed(
-                                    context, EditProfile.routeName),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Avatar2(
+                                img: Img.avatar,
+                                size: s20 * 3,
+                                name: 'Olivia Rodrigo',
+                                style: txt_14_black_500,
+                                // padding: s20,
                               ),
-                              ImageView(
-                                Img.editIcon,
-                                size: s15 * 2,
-                                marginLeft: s5,
-                                onTap: () => Navigator.pushNamed(
-                                    context, EditProfile.routeName),
-                              )
-                            ],
-                          ),
-                        )
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  TextView(
+                                    'Edit',
+                                    style: txt_10_black,
+                                    onTap: () => Navigator.pushNamed(
+                                        context, EditProfile.routeName),
+                                  ),
+                                  ImageView(
+                                    Img.editIcon,
+                                    size: s15 * 2,
+                                    marginLeft: s5,
+                                    onTap: () => Navigator.pushNamed(
+                                        context, EditProfile.routeName),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        const DescCard(
+                          header: 'Name',
+                          data: 'Olivia Rodrigo',
+                        ),
+                        const DescCard(
+                          header: 'Email',
+                          data: '0livia@email.com',
+                        ),
+                        const DescCard(
+                          header: 'Phone Number',
+                          data: '+1 985 547 2222',
+                        ),
+                        const DescCard(
+                          header: 'Address',
+                          data:
+                          "P.O. Box 4400 \nFredericton, New Brunswick \nE38 5A3",
+                        ),
+                        const DescCard(
+                          header: 'Author Blurb',
+                          data: dummy,
+                        ),
                       ],
                     ),
-                    const DescCard(
-                      header: 'Name',
-                      data: 'Olivia Rodrigo',
-                    ),
-                    const DescCard(
-                      header: 'Email',
-                      data: '0livia@email.com',
-                    ),
-                    const DescCard(
-                      header: 'Phone Number',
-                      data: '+1 985 547 2222',
-                    ),
-                    const DescCard(
-                      header: 'Address',
-                      data:
-                          "P.O. Box 4400 \nFredericton, New Brunswick \nE38 5A3",
-                    ),
-                    const DescCard(
-                      header: 'Description of translator',
-                      data: '+1 985 547 2222',
-                    ),
-                    DescCard(
-                      header: 'Qualification documents',
-                      childWd: SizedBox(
-                        height: s20 * 6,
-                        child: ListView.separated(
-                            padding: EdgeInsets.symmetric(vertical: s10),
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => ImageView(
-                                  docList[index],
-                                  fit: BoxFit.fill,
-                                  //boxDeco: boxDecoration(borderColor: grey100, radius: s10),
-                                ),
-                            separatorBuilder: (context, index) =>
-                                SizedBox(width: s10),
-                            itemCount: docList.length),
-                      ),
-                    ),
-                  ],
-                ),
-              ))
+                  ))
             ],
           ),
         ),
@@ -128,6 +111,7 @@ class _ProfileState extends State<Profile> {
       drawer: const SideMenu(),
     );
   }
+
 }
 
 class DescCard extends StatelessWidget {
@@ -148,7 +132,7 @@ class DescCard extends StatelessWidget {
             color: grey,
           ),
         ),
-        TextView(header, style: txt_12_blue_600),
+        TextView(header, style: txt_12_black_600),
         SizedBox(
           child: data != null
               ? TextView(

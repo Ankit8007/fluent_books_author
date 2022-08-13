@@ -4,6 +4,8 @@ import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/ImageView.dart';
 import '../../CustomWidgets/TextView.dart';
 import '../../childWidgets/BottomBanner.dart';
+import '../../childWidgets/DateRangeCalendar.dart';
+import '../../childWidgets/TimerSheet.dart';
 import '../../component/appConstants.dart';
 import '../../component/color.dart';
 import '../../component/decoration.dart';
@@ -48,7 +50,7 @@ class _SetupInterviewState extends State<SetupInterview> {
                             TextView(
                               setupInterview,
                               style: txt_18_white_600_CM,
-                              marginTop: s40 * 2,
+                              marginTop: s40 ,
                             ),
                             TextView(
                               setupIntervDesc,
@@ -57,6 +59,46 @@ class _SetupInterviewState extends State<SetupInterview> {
                             ),
                           ],
                         )),
+
+                    // Align(
+                    //     alignment: Alignment.centerLeft,
+                    //     child: Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         TextView(
+                    //           setupInterview,
+                    //           style: txt_18_white_600_CM,
+                    //           marginTop: s40,
+                    //         ),
+                    //         TextView(
+                    //           setupIntervDesc,
+                    //           style: txt_13_white,
+                    //           marginVertical: s20,
+                    //         ),
+                    //       ],
+                    //     )),
+
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextView('Select Date',style: txt_14_white_600,
+                          marginBottom: s20,
+                        )),
+
+                    Container(
+                        padding: EdgeInsets.all(s15),
+                        decoration: boxDecoration(
+                          color: white,
+                          radius: s10,
+                        ),
+                        child: DateRangeCalendar()),
+
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextView('Select time',style: txt_14_white_600,
+                          marginBottom: s5,
+                          marginTop: s20,
+                        )),
+                    TimerSheet(),
 
                     Button(
                       label: next,

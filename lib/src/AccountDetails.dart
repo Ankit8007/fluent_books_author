@@ -47,28 +47,37 @@ class _AccountDetailsState extends State<AccountDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
+
                     Column(
                       children: [
                         EditCard(
-                          label: 'Your Bank Name',
+                          label: 'Bank Account Number',
                           inputType: TextInputType.name,
-                          hint: 'Bank Name',
+                          hint: '',
+                          txtCtrl: TextEditingController(text: ''),
+                        ),
+                        EditCard(
+                          label: 'Bank Name',
+                          inputType: TextInputType.emailAddress,
+                          hint: '',
                           txtCtrl: TextEditingController(text: ''),
                         ),
                         EditCard(
                           label: 'SWIFT Code',
                           inputType: TextInputType.emailAddress,
-                          hint: 'Code',
+                          hint: '',
                           txtCtrl: TextEditingController(text: ''),
                         ),
                         EditCard(
-                          label: 'Bank Account Number',
+                          label: 'Branch',
                           inputType: TextInputType.phone,
-                          hint: 'Bank Account Number',
+                          hint: '',
                           txtCtrl: TextEditingController(text: ''),
                         ),
                       ],
                     ),
+
+
 
                     Column(
                       children: [
@@ -116,7 +125,7 @@ class EditCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return EditText(
       label: label,
-      labelStyle: txt_12_blue_600,
+      labelStyle: txt_12_black_600,
       controller: txtCtrl,
       hint: hint,
       inputType: inputType,

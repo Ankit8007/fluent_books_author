@@ -22,6 +22,7 @@ final TextStyle txt_14_blue_600 = TextStyle(color: blue, fontSize: s14,fontWeigh
 final TextStyle txt_16_blue_600 = TextStyle(color: blue, fontSize: s16,fontWeight: w6);
 final TextStyle txt_16_blue = TextStyle(color: blue, fontSize: s16,);
 final TextStyle txt_14_black_600 = TextStyle(color: black, fontSize: s14,fontWeight: w6);
+final TextStyle txt_16_black_600 = TextStyle(color: black, fontSize: s16,fontWeight: w6);
 final TextStyle txt_12_blue_600 = TextStyle(color: blue, fontSize: s12,fontWeight: w6);
 final TextStyle txt_12_black_600 = TextStyle(color: black, fontSize: s12,fontWeight: w6);
 final TextStyle txt_13_blue_600_undr = TextStyle(color: blue, fontSize: s13,fontWeight: w6, decoration: TextDecoration.underline);

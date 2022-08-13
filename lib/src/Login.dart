@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bluePaleLavender,
+      backgroundColor: purpleMimosa,
       body: SafeArea(
         child: Column(
           children: [
@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                       alignment: Alignment.centerLeft,
                       child: TextView(
                         log_in,
-                        style: txt_20_white_600_CM,
+                        style: txt_18_white_600_CM,
                         marginTop: s40,
                       )),
                   EditText(
@@ -62,12 +62,12 @@ class _LoginState extends State<Login> {
                       child: TextView(
                         forgotYourPassword_q,
                         marginVertical: s40,
-                        style: txt_15_white_600_undr,
+                        style: txt_13_white_600_undr,
                       )),
                   Button(
                     label: log_in,
-                    labelStyle: txt_20_white,
-                    boxDeco: boxDecoration(color: blue, radius: s10),
+                    labelStyle: txt_16_white,
+                    boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     ontap: () => Navigator.pushNamed(context, Fragment.routeName),
                   ),
                   Row(
@@ -78,11 +78,11 @@ class _LoginState extends State<Login> {
                         dontHaveAnAccount_q,
                         marginRight: s3,
                         marginTop: s40,
-                        style: txt_15_white,
+                        style: txt_13_white,
                       ),
                       TextView(
                         sign_up,
-                        style: txt_15_blue_600_undr,
+                        style: txt_13_blue_600_undr,
                         onTap: () {
                           Navigator.pushNamed(context, CreateAccount.routeName);
                         },
@@ -102,6 +102,6 @@ class _LoginState extends State<Login> {
   }
 
   editTextDecoration() {
-    return boxDecoration(color: white, radius: s10);
+    return boxDecoration(color: white, radius: s10, giveShadow: true);
   }
 }

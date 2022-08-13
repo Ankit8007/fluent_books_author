@@ -29,7 +29,7 @@ class EditText extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
-      this.marginBottom, this.hintStyle, this.inputType, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom, this.preChild, this.postChild})
+      this.marginBottom, this.hintStyle, this.inputType, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom, this.preChild, this.postChild, this.fixedLines})
       : super(key: key);
   final int? maxLines;
   final TextStyle? style;
@@ -37,6 +37,7 @@ class EditText extends StatelessWidget {
   final bool? readOnly;
   final TextAlign? textAlign;
   final int? minLines;
+  final int? fixedLines;
   final int? maxLength;
   final TextInput? keyboardType;
 
@@ -76,6 +77,7 @@ class EditText extends StatelessWidget {
         right: margin ?? marginHorizontal ?? marginRight ?? 0,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             child: label != null
@@ -106,8 +108,9 @@ class EditText extends StatelessWidget {
                     // maxLines: ,
                     readOnly: readOnly ?? false,
                     // textAlign: ,
-                    // minLines: ,
-                    // maxLength: ,
+                     minLines: fixedLines ?? minLines,
+                     maxLines: minLines ?? maxLines,
+                     //maxLength: ,
                     // keyboardType: ,
                     // onChanged: ,
                     // enabled: ,

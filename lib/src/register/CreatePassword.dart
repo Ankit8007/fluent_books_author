@@ -39,7 +39,7 @@ class _CreatePasswordState extends State<CreatePassword> {
 
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: TextView(addPassword,style: txt_20_white_600_CM,marginTop: s40,)),
+                      child: TextView(addPassword,style: txt_18_white_600_CM,marginTop: s40,)),
 
                   EditText(
                     hint: password,
@@ -54,8 +54,8 @@ class _CreatePasswordState extends State<CreatePassword> {
 
                   Button(
                     label: next,
-                    labelStyle: txt_20_white,
-                    boxDeco: boxDecoration(color: blue, radius: s10),
+                    labelStyle: txt_16_white,
+                    boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     marginVertical: s40,
                     ontap: (){
                       Navigator.pushNamed(context, AuthorBlurb.routeName);
@@ -81,6 +81,6 @@ class _CreatePasswordState extends State<CreatePassword> {
     );
   }
   editTextDecoration(){
-    return boxDecoration(color: white, radius: s10);
+    return boxDecoration(color: white, radius: s10,giveShadow: true);
   }
 }

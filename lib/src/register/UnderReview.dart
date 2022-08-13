@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../CustomWidgets/ImageBtn.dart';
+import '../../CustomWidgets/ImageView.dart';
 import '../../CustomWidgets/TextView.dart';
 import '../../childWidgets/BottomBanner.dart';
 import '../../component/appConstants.dart';
 import '../../component/color.dart';
 import '../../component/fonts.dart';
+import '../../component/img.dart';
 import '../../component/size.dart';
 
 class UnderReview extends StatefulWidget {
@@ -40,7 +42,7 @@ class _UnderReviewState extends State<UnderReview> {
             Expanded(child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.timelapse, color: blue, size: 150,),
+                ImageView(Img.waitingIcon,size: s15 * 10,),
                 TextView(underReviewDesc,
                   style: txt_18_white_600_CM,
                   textAlign: TextAlign.center,

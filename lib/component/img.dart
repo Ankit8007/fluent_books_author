@@ -17,6 +17,8 @@ class Img{
   static const String contactUsIcon = '${iconAdr}contactUs.png';
   static const String logoutIcon = '${iconAdr}logout.png';
   static const String menuIcon = '${iconAdr}menu.png';
+  static const String waitingIcon = '${iconAdr}waiting.png';
+  static const String uploadIcon = '${iconAdr}upload.png';
   static const String notificationOutlineIcon = '${iconAdr}notificationOutline.png';
   static const String searchIcon = '${iconAdr}search.png';
   static const String accountIcon = '${iconAdr}account.png';

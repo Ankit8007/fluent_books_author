@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../CustomWidgets/Button.dart';
 import '../CustomWidgets/EditText.dart';
 import '../CustomWidgets/ImageView.dart';
 import '../childWidgets/AppBarView.dart';
+import '../childWidgets/TabButton.dart';
 import '../component/appConstants.dart';
 import '../component/color.dart';
 import '../component/decoration.dart';
+import '../component/fonts.dart';
 import '../component/img.dart';
 import '../component/size.dart';
 import '../controller/FragmentCtrl.dart';
 import 'BookDetails.dart';
+import 'CreateBook.dart';
 import 'SideMenu.dart';
 
 class BookShelf extends StatefulWidget {
@@ -23,6 +27,7 @@ class BookShelf extends StatefulWidget {
 class _BookShelfState extends State<BookShelf> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   final FragmentCtrl scr = Get.put(FragmentCtrl());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +40,12 @@ class _BookShelfState extends State<BookShelf> {
               preIcon: Img.menuIcon,
               title: bookShelf,
               postIcon: Img.notificationOutlineIcon,
-              preTap: (){
+              preTap: () {
                 _key.currentState!.openDrawer();
               },
-              postTap: (){
+              postTap: () {
                 scr.onMenuAction(5);
               },
-
             ),
             EditText(
               hint: search,
@@ -59,25 +63,45 @@ class _BookShelfState extends State<BookShelf> {
             Expanded(
                 child: Container(
               decoration: boxDecoration(radiusTop: s20, color: white),
-              child: GridView.builder(
-                padding: EdgeInsets.symmetric(horizontal: s25, vertical: s25),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: s15 * 2,
-                    mainAxisSpacing: s20,
-                    childAspectRatio: 8 / 10),
-                itemCount: 10,
-                itemBuilder: (context, index) => ImageView(
-                  Img.bookImg,
-                  fit: BoxFit.cover,
-                  radius: s15,
-                  onTap: (){
-                    Navigator.pushNamed(context,BookDetails.routeName);
-                  },
-                  boxDeco: boxDecoration(borderColor: blue, radius: s15),
+              child: Column(children: [
+                Row(
+                  children: [
+                    TabButton(label: myBooks, status: true),
+                    TabButton(label: pendingBooks, status: false),
+                  ],
                 ),
-              ),
-            ))
+                Expanded(
+                  child: GridView.builder(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: s25, vertical: s25),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: s15 * 2,
+                        mainAxisSpacing: s20,
+                        childAspectRatio: 8 / 10),
+                    itemCount: 10,
+                    itemBuilder: (context, index) => ImageView(
+                      Img.bookImg,
+                      fit: BoxFit.cover,
+                      radius: s15,
+                      onTap: () {
+                        Navigator.pushNamed(context, BookDetails.routeName);
+                      },
+                      boxDeco: boxDecoration(borderColor: blue, radius: s15),
+                    ),
+                  ),
+                ),
+              ]),
+            )),
+            Button(
+              label: createBook,
+              labelStyle: txt_16_blue_600,
+              boxDeco: boxDecoration(color: white, radius: s10),
+              margin: s20,
+              ontap: () {
+                Navigator.pushNamed(context, CreateBook.routeName);
+              },
+            )
           ],
         ),
       ),

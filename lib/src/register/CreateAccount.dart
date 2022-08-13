@@ -39,7 +39,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: TextView(createYourAccount,style: txt_20_white_600_CM,marginTop: s40,)),
+                      child: TextView(createYourAccount,style: txt_18_white_600_CM,marginTop: s40,)),
 
                   EditText(
                     hint: firstName,
@@ -54,22 +54,22 @@ class _CreateAccountState extends State<CreateAccount> {
 
                   Button(
                       label: next,
-                      labelStyle: txt_20_white,
-                      boxDeco: boxDecoration(color: blue, radius: s10),
+                      labelStyle: txt_16_white,
+                      boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     marginVertical: s40,
                     ontap: (){
                         Navigator.pushNamed(context, UploadIcon.routeName);
                     },
 
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
-                      TextView(sign_up,style: txt_15_blue_600_undr,)
-                    ],
-                  )
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   crossAxisAlignment: CrossAxisAlignment.end,
+                  //   children: [
+                  //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_13_white,),
+                  //     TextView(sign_up,style: txt_13_blue_600_undr,)
+                  //   ],
+                  // )
                 ],
               ),
             ),
@@ -82,6 +82,6 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
   editTextDecoration(){
-    return boxDecoration(color: white, radius: s10);
+    return boxDecoration(color: white, radius: s10,giveShadow: true);
   }
 }
