@@ -1,5 +1,6 @@
 
 import 'package:fluent_books_author/src/Fragment.dart';
+import 'package:fluent_books_author/src/register/ContactDetails.dart';
 import 'package:fluent_books_author/src/register/CreateAccount.dart';
 import 'package:flutter/material.dart';
 
@@ -84,7 +85,7 @@ class _LoginState extends State<Login> {
                         sign_up,
                         style: txt_13_blue_600_undr,
                         onTap: () {
-                          Navigator.pushNamed(context, CreateAccount.routeName);
+                          Navigator.pushNamed(context, ContactDetails.routeName);
                         },
                       )
                     ],

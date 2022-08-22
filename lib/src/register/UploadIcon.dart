@@ -1,5 +1,6 @@
 import 'package:fluent_books_author/childWidgets/AvatarCard.dart';
 import 'package:fluent_books_author/childWidgets/BottomBanner.dart';
+import 'package:fluent_books_author/src/register/AddAddress.dart';
 import 'package:flutter/material.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -99,7 +100,7 @@ class _UploadIconState extends State<UploadIcon> {
                     boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     marginVertical: s40,
                     ontap: () {
-                      Navigator.pushNamed(context, ContactDetails.routeName);
+                      Navigator.pushNamed(context, AddAddress.routeName);
                     },
                   ),
                 ],

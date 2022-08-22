@@ -30,9 +30,14 @@ dependencies:
   flutter_svg: ^1.1.1+1
   flutter_screenutil: ^5.5.3+2
   syncfusion_flutter_datepicker: ^20.2.39
+  flutter_launcher_icons: ^0.10.0
   get: ^4.6.5
+  flutter_linkify: ^5.0.2
+  url_launcher: ^6.1.5
   flutter:
     sdk: flutter
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -54,6 +59,12 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+
+flutter_icons:
+  android: "logo"
+  ios: true
+  image_path: "assets/images/logo.png"
+
 flutter:
 
   # The following line ensures that the Material Icons font is

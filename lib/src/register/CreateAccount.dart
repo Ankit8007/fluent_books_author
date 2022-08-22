@@ -1,3 +1,4 @@
+import 'package:fluent_books_author/src/register/CreatePassword.dart';
 import 'package:flutter/material.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -58,7 +59,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                     marginVertical: s40,
                     ontap: (){
-                        Navigator.pushNamed(context, UploadIcon.routeName);
+                        Navigator.pushNamed(context, CreatePassword.routeName);
                     },
 
                   ),
