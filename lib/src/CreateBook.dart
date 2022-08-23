@@ -1,7 +1,9 @@
 
 import 'package:fluent_books_author/CustomWidgets/ImageView.dart';
 import 'package:fluent_books_author/CustomWidgets/TextView.dart';
+import 'package:fluent_books_author/src/BookDetails.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../CustomWidgets/Button.dart';
 import '../childWidgets/AppBarView.dart';
@@ -11,6 +13,7 @@ import '../component/decoration.dart';
 import '../component/fonts.dart';
 import '../component/img.dart';
 import '../component/size.dart';
+import '../services/Urls.dart';
 import 'RequestExtendTime.dart';
 
 class CreateBook extends StatefulWidget {
@@ -22,6 +25,24 @@ class CreateBook extends StatefulWidget {
 }
 
 class _CreateBookState extends State<CreateBook> {
+
+  openPage()async{
+    print('launch');
+    var uri = Uri.parse(Urls.webUrl);
+    try{
+      if(await canLaunchUrl(uri)){
+    await launch(Urls.webUrl);
+    }else{
+    print('Could launch this url');
+    }
+    }catch(e){
+    if(await canLaunchUrl(uri)){
+    await launchUrl(uri);
+    }else{
+    print('Could launch this url');
+    }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +89,8 @@ class _CreateBookState extends State<CreateBook> {
                   labelStyle: txt_16_blue_600,
                   boxDeco: boxDecoration(color: white, radius: s10,),
                   margin: s10,
-                  ontap: ()=> Navigator.pushNamed(context, RequestExtendTime.routeName)
+                  //ontap: openPage
+                   ontap: ()=> Navigator.pushNamed(context, BookDetails.routeName)
                 ),
               )
 
