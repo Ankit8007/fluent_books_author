@@ -40,10 +40,6 @@ class _BookDetailsState extends State<BookDetails> {
         print('Could launch this url');
       }
     }
-
-
-
-
   }
   @override
   Widget build(BuildContext context) {
@@ -74,42 +70,45 @@ class _BookDetailsState extends State<BookDetails> {
                     marginBottom: s10,
                     boxDeco: boxDecoration(borderColor: blue, radius: s15),
                   ),
-                  Expanded(child: Container(
-                    width: double.infinity,
-                    color: greyHint,
-                    child: Column(
-                      children: [
-                        TextView('Select Language for translation',
-                          marginVertical: s10,
-                          style: txt_14_black_600_CM,),
-                        Expanded(
-                          child: ListView.separated(
-                            padding: EdgeInsets.symmetric(horizontal: s15 * 2),
-                            shrinkWrap: true,
-                              itemBuilder: (context, index) => LanguageCard(
-                                  color: yellowLightGold,
-                                  lang: langList[index].title,
-                                  img: langList[index].image,
-                                  status: langList[index].status),
-                              separatorBuilder: (context, index) => SizedBox(height: s15,),
-                              itemCount: langList.length),
-                        )
-                      ],
-                    ),
+                  const Expanded(child:   SizedBox()
 
-                  ))
+                  // Container(
+                  //   width: double.infinity,
+                  //   color: greyHint,
+                  //   child: Column(
+                  //     children: [
+                  //       TextView('Select Language for translation',
+                  //         marginVertical: s10,
+                  //         style: txt_14_black_600_CM,),
+                  //       Expanded(
+                  //         child: ListView.separated(
+                  //           padding: EdgeInsets.symmetric(horizontal: s15 * 2),
+                  //           shrinkWrap: true,
+                  //             itemBuilder: (context, index) => LanguageCard(
+                  //                 color: yellowLightGold,
+                  //                 lang: langList[index].title,
+                  //                 img: langList[index].image,
+                  //                 status: langList[index].status),
+                  //             separatorBuilder: (context, index) => SizedBox(height: s15,),
+                  //             itemCount: langList.length),
+                  //       )
+                  //     ],
+                  //   ),
+                  //
+                  // )
+
+                  )
                 ],
               )),
               Container(
                 color: blue,
                 child: Button(
-                  label: 'Accept and start work',
+                  label: 'Continue Edit',
                   labelStyle: txt_16_blue_600,
                   marginVertical: s10,
                   marginHorizontal: s20,
                   boxDeco: boxDecoration(color: white, radius: s10),
                   ontap: _launchUrl,
-
                 ),
               )
             ],

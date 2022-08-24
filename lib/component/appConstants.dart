@@ -92,7 +92,11 @@ const String submit = 'Submit';
 
 
 
-
+const List<String> bookCatTypeList = [
+  'Select Category Type',
+  'Free',
+  'Paid'
+];
 
 final List<SideMenuModel> sideMenuList = [
   SideMenuModel(image: Img.homeIcon,title: bookShelf),

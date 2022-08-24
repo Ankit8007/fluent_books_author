@@ -4,7 +4,27 @@ import '../component/size.dart';
 import 'TextView.dart';
 
 class DropDown extends StatelessWidget {
-  const DropDown({Key? key, required this.hint, this.hintStyle, this.boxDeco, this.margin, this.marginVertical, this.marginHorizontal, this.marginLeft, this.marginRight, this.marginTop, this.marginBottom, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingLeft, this.paddingRight, this.paddingTop, this.paddingBottom}) : super(key: key);
+  const DropDown(
+      {Key? key,
+      required this.hint,
+      this.hintStyle,
+      this.boxDeco,
+      this.margin,
+      this.marginVertical,
+      this.marginHorizontal,
+      this.marginLeft,
+      this.marginRight,
+      this.marginTop,
+      this.marginBottom,
+      this.padding,
+      this.paddingVertical,
+      this.paddingHorizontal,
+      this.paddingLeft,
+      this.paddingRight,
+      this.paddingTop,
+      this.paddingBottom,
+      this.list, this.onChange, this.value})
+      : super(key: key);
   final String hint;
   final TextStyle? hintStyle;
   final BoxDecoration? boxDeco;
@@ -22,6 +42,17 @@ class DropDown extends StatelessWidget {
   final double? paddingRight;
   final double? paddingTop;
   final double? paddingBottom;
+  final List<String>? list;
+  final onChange;
+  final String? value;
+  // String dropdownvalue = 'Item 1';
+  // var items = [
+  //   'Item 1',
+  //   'Item 2',
+  //   'Item 3',
+  //   'Item 4',
+  //   'Item 5',
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +73,33 @@ class DropDown extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TextView(hint,style: hintStyle,),
-          Icon(Icons.arrow_drop_down, size: s15 * 2,),
+          value!.trim().isNotEmpty ? Expanded(
+                child: DropdownButton(
+                    value: value,
+                    isDense: true,
+                    items: list!.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    isExpanded: true,
+                    underline: const SizedBox(),
+                    icon: const SizedBox(),
+                    onChanged: onChange
+                    //     (String? newValue) {
+                    //   dropdownvalue = newValue!;
+                    // }
+                    ),
+              )
+              : TextView(
+                  hint,
+                  style: hintStyle,
+                ),
+          Icon(
+            Icons.arrow_drop_down,
+            size: s15 * 2,
+          ),
         ],
       ),
     );
