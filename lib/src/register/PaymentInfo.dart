@@ -46,18 +46,18 @@ class _PaymentInfoState extends State<PaymentInfo> {
                               alignment: Alignment.centerLeft,
                               child: TextView(paymentInfo,style: txt_18_white_600_CM,marginTop: s40 * 2, )),
 
-                          DropDown(hint: selectYourBank,
-                            boxDeco: editTextDecoration(),
-                            marginTop: s20 * 2,
-                          ),
+                          // DropDown(hint: selectYourBank,
+                          //   boxDeco: editTextDecoration(),
+                          //   marginTop: s20 * 2,
+                          // ),
                           EditText(
-                            hint: enterSwiftCode,
+                            hint: emailAddress,
                             boxDeco: editTextDecoration(),
                             marginVertical: s20,
                           ),
 
                           EditText(
-                            hint: enterAccountNumber,
+                            hint: phoneNumber,
                             boxDeco: editTextDecoration() ,
                           ),
 

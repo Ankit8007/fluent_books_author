@@ -2,6 +2,7 @@ import '../Models/SideMenuModel.dart';
 import 'img.dart';
 
 const String email = 'Email';
+const String emailAddress = 'Email Address';
 const String password = 'Password';
 
 
@@ -35,14 +36,14 @@ const String yourChildLikes = "Your child's likes";
 const String selectTop10Lang = "Select Top 10 languages";
 const String selectLangDesc = 'Free user can choose 4 languages, for subscription you can choose 10 languages';
 const String details = 'Details';
-const String uploadPhotoIcon = 'Upload photo/icon';
+const String uploadPhoto= 'Upload photo';
 const String here = 'Here';
 const String upload = 'Upload';
 const String authorBlurb = 'Author blurb';
 const String writeAboutYou = 'Write About you...';
 const String translatorBlurb = 'Translator blurb';
 const String textHere = 'Text here';
-const String paymentInfo = 'Payment info';
+const String paymentInfo = 'E Payment info';
 const String selectYourBank = 'Select your bank';
 const String enterSwiftCode = 'Enter swift code';
 const String enterAccountNumber = 'Enter account number';

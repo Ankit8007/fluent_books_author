@@ -45,7 +45,7 @@ class _UploadIconState extends State<UploadIcon> {
                   Align(
                       alignment: Alignment.centerLeft,
                       child: TextView(
-                        uploadPhotoIcon,
+                        uploadPhoto,
                         style: txt_18_white_600_CM,
                         marginTop: s40,
                       )),
@@ -55,7 +55,7 @@ class _UploadIconState extends State<UploadIcon> {
                       Expanded(
                         flex: 3,
                         child: EditText(
-                          hint: '$uploadPhotoIcon ${here.toLowerCase()}',
+                          hint: '$uploadPhoto',
                           hintStyle: txt_14_white,
                           boxDeco:
                               boxDecoration(radius: s10, borderColor: white),

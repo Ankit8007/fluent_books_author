@@ -60,11 +60,11 @@ class _YourLanguageState extends State<YourLanguage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 TextView(yourOtherLangs,style: txt_18_white_600_CM,),
-                                ImageBtn(
-                                  childImg: Icon(Icons.add,color: white,size: s15 * 2,),
-                                  padding: s5,
-                                  boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true) ,
-                                )
+                                // ImageBtn(
+                                //   childImg: Icon(Icons.add,color: white,size: s15 * 2,),
+                                //   padding: s5,
+                                //   boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true) ,
+                                // )
                               ],
                             ),
                           ),
@@ -73,6 +73,11 @@ class _YourLanguageState extends State<YourLanguage> {
                           DropDown(hint: 'Language',
                             boxDeco: editTextDecoration(),
                             marginTop: s20 * 2,
+                          ),
+
+                          DropDown(hint: 'Language',
+                            boxDeco: editTextDecoration(),
+                            marginTop: s20,
                           ),
 
 

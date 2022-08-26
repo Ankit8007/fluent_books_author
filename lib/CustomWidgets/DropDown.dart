@@ -73,7 +73,7 @@ class DropDown extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          value!.trim().isNotEmpty ? Expanded(
+          value != null && value!.trim().isNotEmpty && list != null && list!.length > 0 ? Expanded(
                 child: DropdownButton(
                     value: value,
                     isDense: true,
