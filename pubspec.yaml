@@ -32,6 +32,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.2.39
   flutter_launcher_icons: ^0.10.0
   get: ^4.6.5
+  http: ^0.13.5
   flutter_linkify: ^5.0.2
   url_launcher: ^6.1.5
   flutter:

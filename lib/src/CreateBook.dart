@@ -26,7 +26,9 @@ class CreateBook extends StatefulWidget {
 }
 
 class _CreateBookState extends State<CreateBook> {
-  String bookCatType = 'Select Category Type';
+  String bookCatType = bookCatTypeList[0];
+  // String bookSubscriptionType = 'Subscription Type';
+  String bookSubscriptionType = bookSubscriptionList[0];
 
   openPage() async {
     print('launch');
@@ -94,6 +96,36 @@ class _CreateBookState extends State<CreateBook> {
                   ),
 
                   //TextView('Free or Paid Type\n Category', style: txt_12_black_600,marginTop: s20 * 2,),
+                  DropDown(
+                    marginHorizontal: s40,
+                    marginTop: s40,
+                    boxDeco: boxDecoration(
+                        color: white, radius: s10, giveShadow: true),
+                    hint:'Subscription Type',
+                    list: bookSubscriptionList,
+                    value: bookSubscriptionType,
+                    onChange: (String? newValue) {
+                      setState(() {
+                        bookSubscriptionType = newValue!;
+                      });
+                    },
+                  ),
+
+
+                  // DropDown(
+                  //   marginHorizontal: s40,
+                  //   marginTop: s40,
+                  //   boxDeco: boxDecoration(
+                  //       color: white, radius: s10, giveShadow: true),
+                  //   hint: 'Select Category Type',
+                  //   list: bookCatTypeList,
+                  //   value: bookCatType,
+                  //   onChange: (String? newValue) {
+                  //     setState(() {
+                  //       bookCatType = newValue!;
+                  //     });
+                  //   },
+                  // ),
 
                   DropDown(
                     marginHorizontal: s40,

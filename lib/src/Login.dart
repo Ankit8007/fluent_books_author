@@ -1,8 +1,10 @@
 
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/register/ContactDetails.dart';
 import 'package:fluent_books_author/src/register/CreateAccount.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../CustomWidgets/Button.dart';
 import '../CustomWidgets/EditText.dart';
@@ -27,6 +29,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    final AuthCtrl authX = Get.put(AuthCtrl());
     return Scaffold(
       backgroundColor: purpleMimosa,
       body: SafeArea(
@@ -53,10 +56,12 @@ class _LoginState extends State<Login> {
                     hint: email,
                     boxDeco: editTextDecoration(),
                     marginVertical: s20,
+                    controller: authX.emailLogin,
                   ),
                   EditText(
                     hint: password,
                     boxDeco: editTextDecoration(),
+                    controller: authX.passLogin,
                   ),
                   Align(
                       alignment: Alignment.centerRight,
@@ -69,7 +74,14 @@ class _LoginState extends State<Login> {
                     label: log_in,
                     labelStyle: txt_16_white,
                     boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                    ontap: () => Navigator.pushNamed(context, Fragment.routeName),
+                    ontap: () {
+                      authX.login((data) {
+                        if(!data){
+                          Navigator.pushNamed(context, Fragment.routeName);
+                        }
+                      });
+
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

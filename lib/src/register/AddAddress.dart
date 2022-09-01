@@ -1,5 +1,7 @@
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/PaymentInfo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/EditText.dart';
@@ -16,11 +18,14 @@ import '../../component/size.dart';
 class AddAddress extends StatefulWidget {
   const AddAddress({Key? key}) : super(key: key);
   static const String routeName = 'AddAddress';
+
   @override
   State<AddAddress> createState() => _AddAddressState();
 }
 
 class _AddAddressState extends State<AddAddress> {
+  final AuthCtrl authX = Get.put(AuthCtrl());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,46 +40,62 @@ class _AddAddressState extends State<AddAddress> {
                   children: [
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: ImageView(Img.logoImg,size: s15 * 10,)),
+                        child: ImageView(
+                          Img.logoImg,
+                          size: s15 * 10,
+                        )),
 
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: TextView(address,style: txt_18_white_600_CM,marginTop: s40,)),
+                        child: TextView(
+                          address,
+                          style: txt_18_white_600_CM,
+                          marginTop: s40,
+                        )),
 
                     EditText(
                       hint: address,
                       boxDeco: editTextDecoration(),
                       marginVertical: s20,
+                      onChange: (String value) =>
+                          authX.regData.addressDetail.address = value,
                     ),
 
                     EditText(
                       hint: city,
-                      boxDeco: editTextDecoration() ,
+                      boxDeco: editTextDecoration(),
+                      onChange: (String value) =>
+                          authX.regData.addressDetail.city = value,
                     ),
 
                     EditText(
                       hint: state,
-                      boxDeco: editTextDecoration() ,
+                      boxDeco: editTextDecoration(),
                       marginVertical: s20,
+                      onChange: (String value) =>
+                          authX.regData.addressDetail.state = value,
                     ),
 
                     EditText(
-                      hint: zipCode,
-                      boxDeco: editTextDecoration() ,
-                    ),
+                        hint: zipCode,
+                        boxDeco: editTextDecoration(),
+                        onChange: (String value) =>
+                            authX.regData.addressDetail.zipCode = value),
 
                     EditText(
-                      hint: country,
-                      boxDeco: editTextDecoration() ,
-                      marginVertical: s20,
-                    ),
+                        hint: country,
+                        boxDeco: editTextDecoration(),
+                        marginVertical: s20,
+                        onChange: (String value) =>
+                            authX.regData.addressDetail.country = value),
 
                     Button(
                       label: next,
                       labelStyle: txt_16_white,
-                      boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                      boxDeco: boxDecoration(
+                          color: blue, radius: s10, giveShadow: true),
                       marginVertical: s40,
-                      ontap: (){
+                      ontap: () {
                         Navigator.pushNamed(context, PaymentInfo.routeName);
                       },
                     ),
@@ -98,7 +119,8 @@ class _AddAddressState extends State<AddAddress> {
       ),
     );
   }
-  editTextDecoration(){
-    return boxDecoration(color: white, radius: s10,giveShadow: true);
+
+  editTextDecoration() {
+    return boxDecoration(color: white, radius: s10, giveShadow: true);
   }
 }

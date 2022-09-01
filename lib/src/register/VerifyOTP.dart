@@ -23,6 +23,7 @@ class VerifyOTP extends StatefulWidget {
 }
 
 class _VerifyOTPState extends State<VerifyOTP> {
+  final TextEditingController otpCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +61,7 @@ class _VerifyOTPState extends State<VerifyOTP> {
                             hint: otpHere,
                             boxDeco: editTextDecoration(),
                             marginVertical: s20,
+                            controller: otpCtrl,
                           ),
 
                           Row(

@@ -1,3 +1,5 @@
+import 'package:fluent_books_author/Models/InterviewTimeModel.dart';
+
 import '../Models/SideMenuModel.dart';
 import 'img.dart';
 
@@ -91,12 +93,28 @@ const String startWork = 'Start Work';
 const String requestForExtendTime = 'Request for extend time';
 const String submit = 'Submit';
 
+const String enabled = 'enabled';
+const String disabled = 'disabled';
+
+
+
+const List<String> bookSubscriptionList = [
+  'Subscription Type',
+  'Free',
+  'Paid'
+];
+
 
 
 const List<String> bookCatTypeList = [
   'Select Category Type',
-  'Free',
-  'Paid'
+  'Animals'
+  'Art',
+  'Playing',
+  'Princesses',
+  'Reading',
+  'Singing',
+  'Toys'
 ];
 
 final List<SideMenuModel> sideMenuList = [
@@ -143,4 +161,15 @@ final List<String> socialIconList = [
   Img.twitter,
   Img.instagram,
   Img.google
+];
+
+final List<InterviewTimeModel> interviewTimeList = [
+  InterviewTimeModel(time: '10:00 AM',status: true),
+  InterviewTimeModel(time: '10:30 AM',type: disabled),
+  InterviewTimeModel(time: '11:00 AM'),
+  InterviewTimeModel(time: '11:30 AM',type: disabled),
+  InterviewTimeModel(time: '12:00 PM'),
+  InterviewTimeModel(time: '12:30 AM',type: disabled),
+  InterviewTimeModel(time: '01:00 AM'),
+  InterviewTimeModel(time: '01:30 AM'),
 ];

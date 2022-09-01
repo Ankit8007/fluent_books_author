@@ -13,7 +13,6 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-import 'ContactDetails.dart';
 
 class QualificationDoc extends StatefulWidget {
   const QualificationDoc({Key? key}) : super(key: key);

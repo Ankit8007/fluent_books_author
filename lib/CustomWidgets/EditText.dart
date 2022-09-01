@@ -29,6 +29,7 @@ class EditText extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
+        this.onChange,
       this.marginBottom, this.hintStyle, this.inputType, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom, this.preChild, this.postChild, this.fixedLines})
       : super(key: key);
   final int? maxLines;
@@ -40,6 +41,7 @@ class EditText extends StatelessWidget {
   final int? fixedLines;
   final int? maxLength;
   final TextInput? keyboardType;
+  final onChange;
 
   //onChanged: ,
   final bool? enabled;
@@ -123,6 +125,7 @@ class EditText extends StatelessWidget {
                     keyboardType: inputType,
                     obscureText: secureText ?? false,
                     controller: controller,
+                    onChanged: onChange,
                   ),
                 ),
                 SizedBox(

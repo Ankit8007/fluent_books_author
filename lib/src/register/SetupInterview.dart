@@ -1,3 +1,5 @@
+import 'package:fluent_books_author/Models/InterviewTimeModel.dart';
+import 'package:fluent_books_author/childWidgets/ChipCard.dart';
 import 'package:fluent_books_author/src/register/UnderReview.dart';
 import 'package:flutter/material.dart';
 
@@ -99,7 +101,34 @@ class _SetupInterviewState extends State<SetupInterview> {
                           marginBottom: s5,
                           marginTop: s20,
                         )),
-                    TimerSheet(),
+                   Container(
+                     decoration: boxDecoration(radius: s10, color: white),
+                     height: s10 * 7,
+                     child:  GridView.builder(
+                       padding: EdgeInsets.symmetric(horizontal: s15,vertical: s15),
+                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                           crossAxisCount: 3,
+                            crossAxisSpacing: s10,
+                           mainAxisSpacing: s8,
+                         mainAxisExtent: s15 * 2
+
+                       ),
+                       itemCount: interviewTimeList.length,
+                       itemBuilder: (context, index) {
+                         InterviewTimeModel data = interviewTimeList[index];
+                         return ChipCard(
+                           paddingVertical: s5,
+                            bgColor: data.status ? blue : null,
+                           borderColor: data.status ? Colors.transparent : data.type == disabled ? greyHint : black,
+                           child: TextView(
+                               data.time,
+                               textAlign: TextAlign.center,
+                             style: data.status ? txt_14_white : data.type == disabled ? txt_14_hint : txt_14_black,
+                           ),
+                         );
+                       } ,
+                     ),
+                   ),
 
                     Button(
                       label: next,

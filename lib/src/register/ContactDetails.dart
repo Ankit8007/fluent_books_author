@@ -1,6 +1,8 @@
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/UploadIcon.dart';
 import 'package:fluent_books_author/src/register/VerifyOTP.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/EditText.dart';
@@ -24,6 +26,9 @@ class ContactDetails extends StatefulWidget {
 }
 
 class _ContactDetailsState extends State<ContactDetails> {
+  final AuthCtrl authX = Get.put(AuthCtrl());
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController phoneCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +52,15 @@ class _ContactDetailsState extends State<ContactDetails> {
                     hint: email,
                     boxDeco: editTextDecoration(),
                     marginVertical: s20,
+                    controller: emailCtrl,
+                    onChange: (String value) => authX.regData.email = value,
                   ),
 
                   EditText(
                     hint: phoneNumber,
-                    boxDeco: editTextDecoration() ,
+                    boxDeco: editTextDecoration(),
+                    controller: phoneCtrl,
+                    onChange: (String value) => authX.regData.phoneNo,
                   ),
 
                   Button(

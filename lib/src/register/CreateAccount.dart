@@ -1,5 +1,7 @@
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/CreatePassword.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/EditText.dart';
@@ -23,6 +25,9 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  final AuthCtrl authX = Get.put(AuthCtrl());
+  final firstCtrl = TextEditingController();
+  final lastCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +51,15 @@ class _CreateAccountState extends State<CreateAccount> {
                     hint: firstName,
                     boxDeco: editTextDecoration(),
                     marginVertical: s20,
+                    controller: firstCtrl,
+                    onChange: (String value) => authX.regData.firstName = value,
                   ),
 
                   EditText(
                     hint: lastName,
                     boxDeco: editTextDecoration() ,
+                    controller: lastCtrl,
+                    onChange: (String value) => authX.regData.lastName = value,
                   ),
 
                   Button(

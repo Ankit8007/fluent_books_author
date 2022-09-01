@@ -1,5 +1,7 @@
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/UploadIcon.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/EditText.dart';
@@ -12,7 +14,6 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-import 'AddAddress.dart';
 
 class AuthorBlurb extends StatefulWidget {
   const AuthorBlurb({Key? key}) : super(key: key);
@@ -23,6 +24,8 @@ class AuthorBlurb extends StatefulWidget {
 }
 
 class _AuthorBlurbState extends State<AuthorBlurb> {
+  final AuthCtrl authX = Get.put(AuthCtrl());
+  final aboutCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +52,8 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
                     maxLines: 5,
                     minLines: 5,
                     inputType: TextInputType.multiline,
+                    controller: aboutCtrl,
+                    onChange: (String value) => authX.regData.about = value,
 
                   ),
 
