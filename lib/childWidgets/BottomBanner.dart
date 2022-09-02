@@ -9,12 +9,17 @@ class BottomBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImageView(
-      Img.bottomBanner,
-      height: s20 * 5,
-      width: double.infinity,
-      fit: BoxFit.fill,
-      type: svgImage,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ImageView(
+          Img.bottomBanner,
+          height: s20 * 5,
+          width: double.infinity,
+          fit: BoxFit.fill,
+          type: svgImage,
+        ),
+      ],
     );
   }
 }

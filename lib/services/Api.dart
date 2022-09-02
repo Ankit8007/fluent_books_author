@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-const String baseUrl = '';
+const String baseUrl = 'https://www.algowid.net/fluent/api/';
 const Map<String, String> headers = {
   'content-type': 'application/x-www-form-urlencoded'
 };
@@ -26,7 +26,7 @@ postMethod({required String url, var data, var callBack}) async {
   }
 }
 
-getMethod({required String url, var data, var callBack}) async {
+getMethod({required String url, var callBack}) async {
   var uri = Uri.parse(baseUrl + url);
   try {
     var res = await http.get(uri, headers: headers);

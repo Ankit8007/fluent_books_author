@@ -24,34 +24,41 @@ class _UnderReviewState extends State<UnderReview> {
     return Scaffold(
       backgroundColor: pinkRose,
       body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                ImageBtn(
-                  margin: s15,
-                  childImg: Icon(Icons.arrow_back_ios, size: s20,color: white,),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-                TextView(underReview,style: txt_18_white,),
-              ],
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      ImageBtn(
+                        margin: s15,
+                        childImg: Icon(Icons.arrow_back_ios, size: s20,color: white,),
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                      TextView(underReview,style: txt_18_white,),
+                    ],
+                  ),
+
+                  Expanded(child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ImageView(Img.waitingIcon,size: s15 * 10,),
+                      TextView(underReviewDesc,
+                        style: txt_18_white_600_CM,
+                        textAlign: TextAlign.center,
+                        margin: s40
+                      )
+                    ],
+                  )),
+
+                  const BottomBanner(),
+                ],
+              ),
             ),
-
-            Expanded(child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageView(Img.waitingIcon,size: s15 * 10,),
-                TextView(underReviewDesc,
-                  style: txt_18_white_600_CM,
-                  textAlign: TextAlign.center,
-                  margin: s40
-                )
-              ],
-            )),
-
-            const BottomBanner(),
           ],
         ),
       ),

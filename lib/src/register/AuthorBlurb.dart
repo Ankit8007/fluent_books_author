@@ -31,55 +31,62 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
     return Scaffold(
       backgroundColor: yellowishOrange,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(s15),
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
               child: Column(
                 children: [
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: ImageView(Img.logoImg,size: s15 * 10,)),
+                  Padding(
+                    padding: EdgeInsets.all(s15),
+                    child: Column(
+                      children: [
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: ImageView(Img.logoImg,size: s15 * 10,)),
 
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextView(authorBlurb,style: txt_18_white_600_CM,marginTop: s40,)),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextView(authorBlurb,style: txt_18_white_600_CM,marginTop: s40,)),
 
-                  EditText(
-                    hint: writeAboutYou,
-                    boxDeco: editTextDecoration(),
-                    marginVertical: s20,
-                    maxLines: 5,
-                    minLines: 5,
-                    inputType: TextInputType.multiline,
-                    controller: aboutCtrl,
-                    onChange: (String value) => authX.regData.about = value,
+                        EditText(
+                          hint: writeAboutYou,
+                          boxDeco: editTextDecoration(),
+                          marginVertical: s20,
+                          maxLines: 5,
+                          minLines: 5,
+                          inputType: TextInputType.multiline,
+                          controller: aboutCtrl,
+                          onChange: (String value) => authX.regData.about = value,
 
+                        ),
+
+                        Button(
+                          label: next,
+                          labelStyle: txt_16_white,
+                          boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                          marginVertical: s40,
+                          ontap: (){
+                            Navigator.pushNamed(context, UploadIcon.routeName);
+                          },
+                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   crossAxisAlignment: CrossAxisAlignment.end,
+                        //   children: [
+                        //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
+                        //     TextView(sign_up,style: txt_15_blue_600_undr,)
+                        //   ],
+                        // )
+                      ],
+                    ),
                   ),
+                  const Spacer(),
 
-                  Button(
-                    label: next,
-                    labelStyle: txt_16_white,
-                    boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                    marginVertical: s40,
-                    ontap: (){
-                      Navigator.pushNamed(context, UploadIcon.routeName);
-                    },
-                  ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.end,
-                  //   children: [
-                  //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
-                  //     TextView(sign_up,style: txt_15_blue_600_undr,)
-                  //   ],
-                  // )
+                  const BottomBanner(),
                 ],
               ),
             ),
-            const Spacer(),
-
-            const BottomBanner(),
           ],
         ),
       ),

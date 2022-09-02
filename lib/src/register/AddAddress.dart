@@ -31,90 +31,95 @@ class _AddAddressState extends State<AddAddress> {
     return Scaffold(
       backgroundColor: yellowLightGold,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(s15),
-                child: Column(
-                  children: [
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: ImageView(
-                          Img.logoImg,
-                          size: s15 * 10,
-                        )),
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(s15),
+                    child: Column(
+                      children: [
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: ImageView(
+                              Img.logoImg,
+                              size: s15 * 10,
+                            )),
 
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextView(
-                          address,
-                          style: txt_18_white_600_CM,
-                          marginTop: s40,
-                        )),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextView(
+                              address,
+                              style: txt_18_white_600_CM,
+                              marginTop: s40,
+                            )),
 
-                    EditText(
-                      hint: address,
-                      boxDeco: editTextDecoration(),
-                      marginVertical: s20,
-                      onChange: (String value) =>
-                          authX.regData.addressDetail.address = value,
+                        EditText(
+                          hint: address,
+                          boxDeco: editTextDecoration(),
+                          marginVertical: s20,
+                          onChange: (String value) =>
+                              authX.regData.addressDetail.address = value,
+                        ),
+
+                        EditText(
+                          hint: city,
+                          boxDeco: editTextDecoration(),
+                          onChange: (String value) =>
+                              authX.regData.addressDetail.city = value,
+                        ),
+
+                        EditText(
+                          hint: state,
+                          boxDeco: editTextDecoration(),
+                          marginVertical: s20,
+                          onChange: (String value) =>
+                              authX.regData.addressDetail.state = value,
+                        ),
+
+                        EditText(
+                            hint: zipCode,
+                            boxDeco: editTextDecoration(),
+                            onChange: (String value) =>
+                                authX.regData.addressDetail.zipCode = value),
+
+                        EditText(
+                            hint: country,
+                            boxDeco: editTextDecoration(),
+                            marginVertical: s20,
+                            onChange: (String value) =>
+                                authX.regData.addressDetail.country = value),
+
+                        Button(
+                          label: next,
+                          labelStyle: txt_16_white,
+                          boxDeco: boxDecoration(
+                              color: blue, radius: s10, giveShadow: true),
+                          marginVertical: s40,
+                          ontap: () {
+                            Navigator.pushNamed(context, PaymentInfo.routeName);
+                          },
+                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   crossAxisAlignment: CrossAxisAlignment.end,
+                        //   children: [
+                        //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
+                        //     TextView(sign_up,style: txt_15_blue_600_undr,)
+                        //   ],
+                        // )
+                      ],
                     ),
+                  ),
+                  //const Spacer(),
 
-                    EditText(
-                      hint: city,
-                      boxDeco: editTextDecoration(),
-                      onChange: (String value) =>
-                          authX.regData.addressDetail.city = value,
-                    ),
-
-                    EditText(
-                      hint: state,
-                      boxDeco: editTextDecoration(),
-                      marginVertical: s20,
-                      onChange: (String value) =>
-                          authX.regData.addressDetail.state = value,
-                    ),
-
-                    EditText(
-                        hint: zipCode,
-                        boxDeco: editTextDecoration(),
-                        onChange: (String value) =>
-                            authX.regData.addressDetail.zipCode = value),
-
-                    EditText(
-                        hint: country,
-                        boxDeco: editTextDecoration(),
-                        marginVertical: s20,
-                        onChange: (String value) =>
-                            authX.regData.addressDetail.country = value),
-
-                    Button(
-                      label: next,
-                      labelStyle: txt_16_white,
-                      boxDeco: boxDecoration(
-                          color: blue, radius: s10, giveShadow: true),
-                      marginVertical: s40,
-                      ontap: () {
-                        Navigator.pushNamed(context, PaymentInfo.routeName);
-                      },
-                    ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   crossAxisAlignment: CrossAxisAlignment.end,
-                    //   children: [
-                    //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
-                    //     TextView(sign_up,style: txt_15_blue_600_undr,)
-                    //   ],
-                    // )
-                  ],
-                ),
+                  const BottomBanner(),
+                ],
               ),
-              //const Spacer(),
-
-              const BottomBanner(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

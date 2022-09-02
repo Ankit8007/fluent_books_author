@@ -31,64 +31,68 @@ class _PaymentInfoState extends State<PaymentInfo> {
     return Scaffold(
       backgroundColor: greenPaleOlive_light,
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(s15),
-                      child: Column(
-                        children: [
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: ImageView(Img.logoImg,size: s15 * 8,)),
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(s15),
+                        child: Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: ImageView(Img.logoImg,size: s15 * 8,)),
 
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: TextView(paymentInfo,style: txt_18_white_600_CM,marginTop: s40 * 2, )),
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: TextView(paymentInfo,style: txt_18_white_600_CM,marginTop: s40 * 2, )),
 
-                          // DropDown(hint: selectYourBank,
-                          //   boxDeco: editTextDecoration(),
-                          //   marginTop: s20 * 2,
-                          // ),
-                          EditText(
-                            hint: emailAddress,
-                            boxDeco: editTextDecoration(),
-                            marginVertical: s20,
-                            onChange: (String value) => authX.regData.payEmail = value,
-                          ),
+                            // DropDown(hint: selectYourBank,
+                            //   boxDeco: editTextDecoration(),
+                            //   marginTop: s20 * 2,
+                            // ),
+                            EditText(
+                              hint: emailAddress,
+                              boxDeco: editTextDecoration(),
+                              marginVertical: s20,
+                              onChange: (String value) => authX.regData.payEmail = value,
+                            ),
 
-                          EditText(
-                            hint: phoneNumber,
-                            boxDeco: editTextDecoration() ,
-                            onChange: (String value) => authX.regData.payPhoneNo = value,
-                          ),
+                            EditText(
+                              hint: phoneNumber,
+                              boxDeco: editTextDecoration() ,
+                              onChange: (String value) => authX.regData.payPhoneNo = value,
+                            ),
 
 
 
-                          Button(
-                            label: next,
-                            labelStyle: txt_16_white,
-                            boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
-                            marginVertical: s40,
-                            ontap: (){
-                              Navigator.pushNamed(context, YourLanguage.routeName);
-                            },
-                          ),
-                        ],
+                            Button(
+                              label: next,
+                              labelStyle: txt_16_white,
+                              boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
+                              marginVertical: s40,
+                              ontap: (){
+                                Navigator.pushNamed(context, YourLanguage.routeName);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    //const Spacer(),
+                      //const Spacer(),
 
 
 
-                  ],
-                ),
+                    ],
+                  ),
+                  const Spacer(),
+                  const BottomBanner(),
+                ],
               ),
             ),
-            const BottomBanner(),
           ],
         ),
       ),

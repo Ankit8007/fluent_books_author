@@ -12,6 +12,7 @@ class RegistrationModel {
   List<String> docList;
   String meetDate;
   String meetTime;
+  String otp;
 
   RegistrationModel({
     this.email = '',
@@ -26,7 +27,9 @@ class RegistrationModel {
     this.payPhoneNo = '',
     required this.docList,
     this.meetDate = '',
-    this.meetTime = ''});
+    this.meetTime = '',
+    this.otp = '',
+  });
 }
 
 class AddressDetails {

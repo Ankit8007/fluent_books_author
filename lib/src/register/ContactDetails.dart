@@ -2,6 +2,7 @@ import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/UploadIcon.dart';
 import 'package:fluent_books_author/src/register/VerifyOTP.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -34,58 +35,64 @@ class _ContactDetailsState extends State<ContactDetails> {
     return Scaffold(
       backgroundColor: pinkRose,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(s15),
-              child: Column(
-                children: [
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: ImageView(Img.logoImg,size: s15 * 10,)),
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+                child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(s15),
+                  child: Column(
+                    children: [
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: ImageView(Img.logoImg,size: s15 * 10,)),
 
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextView(contactDetails,style: txt_18_white_600_CM,marginTop: s40,)),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextView(contactDetails,style: txt_18_white_600_CM,marginTop: s40,)),
 
-                  EditText(
-                    hint: email,
-                    boxDeco: editTextDecoration(),
-                    marginVertical: s20,
-                    controller: emailCtrl,
-                    onChange: (String value) => authX.regData.email = value,
+                      EditText(
+                        hint: email,
+                        boxDeco: editTextDecoration(),
+                        marginVertical: s20,
+                        controller: emailCtrl,
+                        onChange: (String value) => authX.regData.email = value,
+                      ),
+
+                      EditText(
+                        hint: phoneNumber,
+                        boxDeco: editTextDecoration(),
+                        controller: phoneCtrl,
+                        onChange: (String value) => authX.regData.phoneNo,
+                      ),
+
+                      Button(
+                        label: next,
+                        labelStyle: txt_16_white,
+                        boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                        marginVertical: s40,
+                        ontap: (){
+                          authX.register((status,msg,error) {
+                            if(status){
+                              Fluttertoast.showToast(msg: msg);
+                              Navigator.pushNamed(context, VerifyOTP.routeName);
+                            }else{
+                              Fluttertoast.showToast(msg: error);
+                            }
+                          });
+
+                        },
+                      ),
+                    ],
                   ),
+                ),
 
-                  EditText(
-                    hint: phoneNumber,
-                    boxDeco: editTextDecoration(),
-                    controller: phoneCtrl,
-                    onChange: (String value) => authX.regData.phoneNo,
-                  ),
+                const  Expanded(child:  BottomBanner()),
+              ],
+            ))
 
-                  Button(
-                    label: next,
-                    labelStyle: txt_16_white,
-                    boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                    marginVertical: s40,
-                    ontap: (){
-                      Navigator.pushNamed(context, VerifyOTP.routeName);
-                    },
-                  ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.end,
-                  //   children: [
-                  //     TextView(dontHaveAnAccount_q,marginRight: s3, marginTop: s40,style: txt_15_white,),
-                  //     TextView(sign_up,style: txt_15_blue_600_undr,)
-                  //   ],
-                  // )
-                ],
-              ),
-            ),
-            const Spacer(),
-
-            const BottomBanner(),
           ],
         ),
       ),
