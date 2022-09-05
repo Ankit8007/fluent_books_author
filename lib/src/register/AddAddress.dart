@@ -1,6 +1,7 @@
 import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/PaymentInfo.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -99,7 +100,14 @@ class _AddAddressState extends State<AddAddress> {
                               color: blue, radius: s10, giveShadow: true),
                           marginVertical: s40,
                           ontap: () {
-                            Navigator.pushNamed(context, PaymentInfo.routeName);
+                            authX.updateAddress((status,msg,error){
+                              if(status){
+                                Fluttertoast.showToast(msg: msg);
+                                Navigator.pushNamed(context, PaymentInfo.routeName);
+                              }else{
+                                Fluttertoast.showToast(msg: error);
+                              }
+                            });
                           },
                         ),
                         // Row(

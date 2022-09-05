@@ -19,7 +19,7 @@ bool isPassword(String password){
 bool isPhone(String phone){
   var length= phone.trim().length;
   if(length == 10){
-    return false;
+    return true;
   }else{
     return false;
   }
@@ -28,6 +28,15 @@ bool isPhone(String phone){
 bool isName(String name){
   var length = name.trim().length;
   if(length >= 4){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+bool isOTP(String otp){
+  var length = otp.trim().length;
+  if(length == 4){
     return true;
   }else{
     return false;

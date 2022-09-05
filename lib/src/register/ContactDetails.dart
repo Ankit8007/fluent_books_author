@@ -65,7 +65,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                         hint: phoneNumber,
                         boxDeco: editTextDecoration(),
                         controller: phoneCtrl,
-                        onChange: (String value) => authX.regData.phoneNo,
+                        onChange: (String value) => authX.regData.phoneNo = value,
                       ),
 
                       Button(
@@ -75,10 +75,13 @@ class _ContactDetailsState extends State<ContactDetails> {
                         marginVertical: s40,
                         ontap: (){
                           authX.register((status,msg,error) {
+                            print('got status......$status');
                             if(status){
                               Fluttertoast.showToast(msg: msg);
+                              print('got response msg ::: $msg');
                               Navigator.pushNamed(context, VerifyOTP.routeName);
                             }else{
+                              print('got response erroe ::: $error');
                               Fluttertoast.showToast(msg: error);
                             }
                           });

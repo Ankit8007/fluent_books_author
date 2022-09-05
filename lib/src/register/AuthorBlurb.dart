@@ -1,6 +1,7 @@
 import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/UploadIcon.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -67,7 +68,15 @@ class _AuthorBlurbState extends State<AuthorBlurb> {
                           boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                           marginVertical: s40,
                           ontap: (){
-                            Navigator.pushNamed(context, UploadIcon.routeName);
+                            authX.updateAbout((status,msg,error){
+                              if(status){
+                                Fluttertoast.showToast(msg: msg);
+                                Navigator.pushNamed(context, UploadIcon.routeName);
+                              }else{
+                                Fluttertoast.showToast(msg: error);
+                              }
+                            });
+
                           },
                         ),
                         // Row(

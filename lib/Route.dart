@@ -26,6 +26,7 @@ import 'src/AccountDetails.dart';
 import 'src/BookDetails.dart';
 import 'src/ChangePassword.dart';
 import 'src/CreateBook.dart';
+import 'src/ForgotPassword.dart';
 import 'src/Languages.dart';
 import 'src/Notifications.dart';
 import 'src/PaymentDetails.dart';
@@ -36,6 +37,7 @@ import 'src/TermsCondition.dart';
 final Map<String, WidgetBuilder> routes = {
   Splash.routeName:(context) => const Splash(),
   Login.routeName: (context) => const Login(),
+  ForgotPassword.routeName: (context) => const ForgotPassword(),
   CreateAccount.routeName:(context)=> const CreateAccount(),
   UploadIcon.routeName: (context) => const UploadIcon(),
   ContactDetails.routeName:(context)=> const ContactDetails(),

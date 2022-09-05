@@ -1,7 +1,13 @@
+import 'package:fluent_books_author/Methods/Pickers.dart';
 import 'package:fluent_books_author/childWidgets/AvatarCard.dart';
 import 'package:fluent_books_author/childWidgets/BottomBanner.dart';
+import 'package:fluent_books_author/childWidgets/ChooseImage.dart';
+import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:fluent_books_author/src/register/AddAddress.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
 import '../../CustomWidgets/EditText.dart';
@@ -13,7 +19,6 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-import 'ContactDetails.dart';
 
 class UploadIcon extends StatefulWidget {
   const UploadIcon({Key? key}) : super(key: key);
@@ -24,6 +29,34 @@ class UploadIcon extends StatefulWidget {
 }
 
 class _UploadIconState extends State<UploadIcon> {
+  final AuthCtrl authX = Get.put(AuthCtrl());
+  launchSheet()async {
+    await openBottomSheet(context: context, child: ChooseImage(
+      cameraTap: () => picker('camera'),
+      galleryTap: () => picker('gallery'),
+    ));
+  }
+  picker(var type)async{
+    Navigator.pop(context);
+    var imgPath = '';
+    if(type == 'camera'){
+     await launchCamera((status,path){
+        if(status){
+          imgPath = path;
+        }
+      });
+    }else{
+      await openGallery((status,path){
+        if(status){
+          imgPath = path;
+        }
+      });
+    }
+    if(imgPath.isNotEmpty){
+      authX.regData.photo = imgPath;
+      authX.update();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +91,19 @@ class _UploadIconState extends State<UploadIcon> {
                           children: [
                             Expanded(
                               flex: 3,
-                              child: EditText(
-                                hint: '$uploadPhoto',
-                                hintStyle: txt_14_white,
-                                boxDeco:
-                                    boxDecoration(radius: s10, borderColor: white),
-                                marginVertical: s20,
-                                marginRight: s10,
-                                readOnly: true,
+                              child: GetBuilder<AuthCtrl>(
+                                  builder: (controller) {
+                                  return EditText(
+                                    hint: uploadPhoto,
+                                    hintStyle: txt_14_white,
+                                    boxDeco:
+                                        boxDecoration(radius: s10, borderColor: white),
+                                    marginVertical: s20,
+                                    marginRight: s10,
+                                    controller: TextEditingController(text: authX.regData.photo),
+                                    readOnly: true,
+                                  );
+                                }
                               ),
                             ),
                             Expanded(
@@ -73,7 +111,9 @@ class _UploadIconState extends State<UploadIcon> {
                               child: Button(
                                   label: upload,
                                   labelStyle: txt_14_white,
-                                  boxDeco: boxDecoration(color: blue, radius: s8)),
+                                  boxDeco: boxDecoration(color: blue, radius: s8),
+                                ontap: launchSheet,
+                              ),
                             )
                           ],
                         ),
@@ -82,17 +122,20 @@ class _UploadIconState extends State<UploadIcon> {
                           height: s20 * 4,
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) =>  AvatarCard(src: Img.logoImg, size: s20 * 3,
-                                  boxDeco: boxDecoration(color: grey, radius: s5),
-                                  onDelete: (){
-
-                                  },
-                                ),
-                                separatorBuilder: (context, index) => SizedBox(width: s5,),
-                                itemCount: 2),
+                            child: GetBuilder<AuthCtrl>(
+                              builder: (controller) {
+                                return SizedBox(
+                                  child: authX.regData.photo.isNotEmpty ?
+                                  AvatarCard(src: authX.regData.photo,fit:BoxFit.cover,imageType: fileImage, size: s20 * 3,
+                                    boxDeco: boxDecoration(color: grey, radius: s5),
+                                    onDelete: (){
+                                      authX.regData.photo = '';
+                                      authX.update();
+                                    },
+                                  ): null,
+                                );
+                              }
+                            ),
                           ),
                         ),
 
@@ -104,7 +147,15 @@ class _UploadIconState extends State<UploadIcon> {
                           boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
                           marginVertical: s40,
                           ontap: () {
-                            Navigator.pushNamed(context, AddAddress.routeName);
+                            authX.uploadImage((status,msg,error){
+                              if(status){
+                                Fluttertoast.showToast(msg: msg);
+                                Navigator.pushNamed(context, AddAddress.routeName);
+                              }else{
+                                Fluttertoast.showToast(msg: error);
+                              }
+                            });
+
                           },
                         ),
                       ],

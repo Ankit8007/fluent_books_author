@@ -18,8 +18,9 @@ class AvatarCard extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
-        this.marginBottom, this.onDelete
-      })
+      this.marginBottom,
+      this.fit,
+      this.onDelete})
       : super(key: key);
   final double? size;
   final double? width;
@@ -35,6 +36,7 @@ class AvatarCard extends StatelessWidget {
   final double? marginRight;
   final double? marginBottom;
   final GestureTapCallback? onDelete;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +51,19 @@ class AvatarCard extends StatelessWidget {
           decoration: boxDeco,
           width: size ?? width,
           height: size ?? height,
-          child: ImageView(src),
+          child: ImageView(
+            src,
+            type: imageType,
+            fit: fit,
+          ),
         ),
-        Positioned(top: 0, right: 0, child: SizedBox(
-    child: onDelete != null ? const Icon(Icons.close): null
-    )
-
-        )
+        Positioned(
+            top: 0,
+            right: 0,
+            child: SizedBox(
+                child: onDelete != null ? GestureDetector(
+                  onTap: onDelete,
+                    child: const Icon(Icons.close)) : null))
       ],
     );
   }

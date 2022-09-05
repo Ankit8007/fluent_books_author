@@ -3,6 +3,7 @@ import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/register/ContactDetails.dart';
 import 'package:fluent_books_author/src/register/CreateAccount.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../CustomWidgets/Button.dart';
@@ -80,7 +81,18 @@ class _LoginState extends State<Login> {
                         ontap: () {
                           authX.login((data) {
                             if (!data) {
-                              Navigator.pushNamed(context, Fragment.routeName);
+                              authX.login((status,msg,error) {
+                                if(status){
+                                  Fluttertoast.showToast(msg: msg);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const Fragment(),
+                                      ));
+                                }else{
+                                  Fluttertoast.showToast(msg: error);
+                                }
+                              });
                             }
                           });
                         },
