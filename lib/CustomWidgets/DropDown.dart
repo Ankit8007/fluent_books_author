@@ -1,3 +1,4 @@
+import 'package:fluent_books_author/Models/DropMenuModel.dart';
 import 'package:flutter/material.dart';
 
 import '../component/size.dart';
@@ -42,9 +43,10 @@ class DropDown extends StatelessWidget {
   final double? paddingRight;
   final double? paddingTop;
   final double? paddingBottom;
-  final List<String>? list;
+  // final List<String>? list;
+  final List<DropMenuModel>? list;
   final onChange;
-  final String? value;
+  final DropMenuModel? value;
   // String dropdownvalue = 'Item 1';
   // var items = [
   //   'Item 1',
@@ -56,6 +58,8 @@ class DropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    print('init value :: $value');
     return Container(
       decoration: boxDeco,
       margin: EdgeInsets.only(
@@ -73,22 +77,27 @@ class DropDown extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          value != null && value!.trim().isNotEmpty && list != null && list!.length > 0 ? Expanded(
+          list != null && list!.length > 0 && value != null ? Expanded(
+          // label.isNotEmpty ? Expanded(
                 child: DropdownButton(
                     value: value,
                     isDense: true,
-                    items: list!.map((String items) {
+                    items: list!.map((DropMenuModel items) {
                       return DropdownMenuItem(
                         value: items,
-                        child: Text(items),
+                        child: Text(items.label),
                       );
                     }).toList(),
                     isExpanded: true,
                     underline: const SizedBox(),
                     icon: const SizedBox(),
-                    onChanged: onChange
-                    //     (String? newValue) {
-                    //   dropdownvalue = newValue!;
+                    onChanged:
+                     onChange
+                    //    onChange (var newValue) {
+                    //
+                    //   print(newValue);
+                    //
+                    //  // dropdownvalue = newValue!.label;
                     // }
                     ),
               )

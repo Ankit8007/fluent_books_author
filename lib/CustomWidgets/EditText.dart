@@ -29,8 +29,20 @@ class EditText extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
-        this.onChange,
-      this.marginBottom, this.hintStyle, this.inputType, this.padding, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom, this.preChild, this.postChild, this.fixedLines})
+      this.onChange,
+      this.marginBottom,
+      this.hintStyle,
+      this.inputType,
+      this.padding,
+      this.paddingVertical,
+      this.paddingHorizontal,
+      this.paddingTop,
+      this.paddingLeft,
+      this.paddingRight,
+      this.paddingBottom,
+      this.preChild,
+      this.postChild,
+      this.fixedLines})
       : super(key: key);
   final int? maxLines;
   final TextStyle? style;
@@ -69,6 +81,7 @@ class EditText extends StatelessWidget {
   final double? paddingBottom;
   final Widget? preChild;
   final Widget? postChild;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -110,9 +123,9 @@ class EditText extends StatelessWidget {
                     // maxLines: ,
                     readOnly: readOnly ?? false,
                     // textAlign: ,
-                     minLines: fixedLines ?? minLines,
-                     maxLines: minLines ?? maxLines,
-                     //maxLength: ,
+                    minLines: minLines ?? 1,
+                    maxLines: maxLines ?? 1,
+                    maxLength: maxLength,
                     // keyboardType: ,
                     // onChanged: ,
                     // enabled: ,
@@ -121,6 +134,7 @@ class EditText extends StatelessWidget {
                       hintText: hint ?? '',
                       hintStyle: hintStyle ?? txt_14_hint,
                       border: InputBorder.none,
+                        counterText: ''
                     ),
                     keyboardType: inputType,
                     obscureText: secureText ?? false,

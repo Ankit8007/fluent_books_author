@@ -16,7 +16,6 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-import 'CreatePassword.dart';
 
 class ContactDetails extends StatefulWidget {
   const ContactDetails({Key? key}) : super(key: key);
@@ -58,6 +57,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                         boxDeco: editTextDecoration(),
                         marginVertical: s20,
                         controller: emailCtrl,
+                        inputType: TextInputType.emailAddress,
                         onChange: (String value) => authX.regData.email = value,
                       ),
 
@@ -65,28 +65,37 @@ class _ContactDetailsState extends State<ContactDetails> {
                         hint: phoneNumber,
                         boxDeco: editTextDecoration(),
                         controller: phoneCtrl,
+                        maxLength: 13,
+                        inputType: TextInputType.phone,
                         onChange: (String value) => authX.regData.phoneNo = value,
                       ),
 
-                      Button(
-                        label: next,
-                        labelStyle: txt_16_white,
-                        boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                        marginVertical: s40,
-                        ontap: (){
-                          authX.register((status,msg,error) {
-                            print('got status......$status');
-                            if(status){
-                              Fluttertoast.showToast(msg: msg);
-                              print('got response msg ::: $msg');
-                              Navigator.pushNamed(context, VerifyOTP.routeName);
-                            }else{
-                              print('got response erroe ::: $error');
-                              Fluttertoast.showToast(msg: error);
-                            }
-                          });
+                      GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                          return Button(
+                            label: next,
+                            labelStyle: txt_16_white,
+                            boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                            marginVertical: s40,
+                            isActive: authX.btnCtrl.contDetail,
+                            ontap: (){
+                              if(authX.btnCtrl.contDetail){
+                                authX.register((status,msg,error) {
+                                  print('got status......$status');
+                                  if(status){
+                                    Fluttertoast.showToast(msg: msg);
+                                    print('got response msg ::: $msg');
+                                    Navigator.pushNamed(context, VerifyOTP.routeName);
+                                  }else{
+                                    print('got response erroe ::: $error');
+                                    Fluttertoast.showToast(msg: error);
+                                  }
+                                });
+                              }
 
-                        },
+                            },
+                          );
+                        }
                       ),
                     ],
                   ),

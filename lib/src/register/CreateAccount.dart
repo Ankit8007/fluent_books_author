@@ -67,23 +67,29 @@ class _CreateAccountState extends State<CreateAccount> {
                           onChange: (String value) => authX.regData.lastName = value,
                         ),
 
-                        Button(
-                            label: next,
-                            labelStyle: txt_16_white,
-                            boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                          marginVertical: s40,
-                          ontap: (){
-                              authX.updateName((status,msg,error){
-                                if(status){
-                                  Fluttertoast.showToast(msg: msg);
-                                  Navigator.pushNamed(context, CreatePassword.routeName);
-                                }else{
-                                  Fluttertoast.showToast(msg: error);
-                                }
-                              });
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                                label: next,
+                                labelStyle: txt_16_white,
+                                boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                              marginVertical: s40,
+                              isActive: authX.btnCtrl.crtAcc,
+                              ontap: (){
+                                  if(authX.btnCtrl.crtAcc){
+                                    authX.updateName((status,msg,error){
+                                      if(status){
+                                        Fluttertoast.showToast(msg: msg);
+                                        Navigator.pushNamed(context, CreatePassword.routeName);
+                                      }else{
+                                        Fluttertoast.showToast(msg: error);
+                                      }
+                                    });
+                                  }
+                              },
 
-                          },
-
+                            );
+                          }
                         ),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.center,

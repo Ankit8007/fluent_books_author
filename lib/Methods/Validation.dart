@@ -18,7 +18,7 @@ bool isPassword(String password){
 
 bool isPhone(String phone){
   var length= phone.trim().length;
-  if(length == 10){
+  if(length >= 10 && length <= 13){
     return true;
   }else{
     return false;

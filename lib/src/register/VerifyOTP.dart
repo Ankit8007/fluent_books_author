@@ -64,6 +64,8 @@ class _VerifyOTPState extends State<VerifyOTP> {
                           hint: otpHere,
                           boxDeco: editTextDecoration(),
                           marginVertical: s20,
+                          maxLength: 4,
+                          inputType: TextInputType.number,
                           controller: otpCtrl,
                         ),
 
@@ -76,23 +78,29 @@ class _VerifyOTPState extends State<VerifyOTP> {
 
 
 
-                        Button(
-                          label: verify,
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
-                          marginVertical: s40,
-                          ontap: (){
-                            authX.otpVerification((status,msg,error){
-                              if(status){
-                                Fluttertoast.showToast(msg: msg);
-                                Navigator.pushNamed(context, CreateAccount.routeName);
-                              }else{
-                                Fluttertoast.showToast(msg: error);
-                              }
-                            });
 
-
-                          },
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                              label: verify,
+                              labelStyle: txt_16_white,
+                              boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
+                              marginVertical: s40,
+                              isActive: authX.btnCtrl.otp,
+                              ontap: (){
+                                if(authX.btnCtrl.otp){
+                                  authX.otpVerification((status,msg,error){
+                                    if(status){
+                                      Fluttertoast.showToast(msg: msg);
+                                      Navigator.pushNamed(context, CreateAccount.routeName);
+                                    }else{
+                                      Fluttertoast.showToast(msg: error);
+                                    }
+                                  });
+                                }
+                              },
+                            );
+                          }
                         ),
                       ],
                     ),

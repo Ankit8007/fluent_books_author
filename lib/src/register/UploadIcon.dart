@@ -141,22 +141,30 @@ class _UploadIconState extends State<UploadIcon> {
 
 
 
-                        Button(
-                          label: next,
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                          marginVertical: s40,
-                          ontap: () {
-                            authX.uploadImage((status,msg,error){
-                              if(status){
-                                Fluttertoast.showToast(msg: msg);
-                                Navigator.pushNamed(context, AddAddress.routeName);
-                              }else{
-                                Fluttertoast.showToast(msg: error);
-                              }
-                            });
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                              label: next,
+                              labelStyle: txt_16_white,
+                              boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                              marginVertical: s40,
+                              isActive: authX.btnCtrl.uploadIcon,
+                              ontap: () {
+                                if( authX.btnCtrl.uploadIcon){
+                                  authX.uploadImage((status,msg,error){
+                                    if(status){
+                                      Fluttertoast.showToast(msg: msg);
+                                      Navigator.pushNamed(context, AddAddress.routeName);
+                                    }else{
+                                      Fluttertoast.showToast(msg: error);
+                                    }
+                                  });
+                                }
 
-                          },
+
+                              },
+                            );
+                          }
                         ),
                       ],
                     ),

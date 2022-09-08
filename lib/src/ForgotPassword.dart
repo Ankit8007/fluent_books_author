@@ -64,25 +64,33 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           marginVertical: s20,
                           controller: ctrl,
                         ),
-                        Button(
-                            label: submit,
-                            labelStyle: txt_16_white,
-                            boxDeco: boxDecoration(
-                                color: blue, radius: s10, giveShadow: true),
-                            ontap: () {
-                              authX.forgotPassword(ctrl.text,(status,msg,error) {
-                                if(status){
-                                  Fluttertoast.showToast(msg: msg);
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //       builder: (context) => const Fragment(),
-                                  //     ));
-                                }else{
-                                  Fluttertoast.showToast(msg: error);
-                                }
-                              });
-                            }),
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                                label: submit,
+                                isActive: authX.btnCtrl.forgot,
+                                labelStyle: txt_16_white,
+                                boxDeco: boxDecoration(
+                                    color: blue, radius: s10, giveShadow: true),
+                                ontap: () {
+                                  if(authX.btnCtrl.forgot){
+                                    authX.forgotPassword(ctrl.text,(status,msg,error) {
+                                      if(status){
+                                        Fluttertoast.showToast(msg: msg);
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //       builder: (context) => const Fragment(),
+                                        //     ));
+                                      }else{
+                                        Fluttertoast.showToast(msg: error);
+                                      }
+                                    });
+                                  }
+
+                                });
+                          }
+                        ),
                       ],
                     ),
                   ),

@@ -12,7 +12,8 @@ class ChipCard extends StatelessWidget {
       this.borderColor,
       this.paddingHorizontal,
       this.paddingVertical,
-      this.padding})
+      this.padding,
+      this.onTap})
       : super(key: key);
   final child;
   final Color? bgColor;
@@ -21,18 +22,22 @@ class ChipCard extends StatelessWidget {
   final double? paddingHorizontal;
   final double? paddingVertical;
   final double? padding;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: boxDecoration(
-          color: bgColor,
-          radius: radius ?? s10,
-          borderColor: borderColor ?? black,
-        ),
-        padding: EdgeInsets.symmetric(
-            vertical: padding ?? paddingVertical ?? 0,
-            horizontal: padding ?? paddingHorizontal ?? 0),
-        child: child);
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          decoration: boxDecoration(
+            color: bgColor,
+            radius: radius ?? s10,
+            borderColor: borderColor ?? black,
+          ),
+          padding: EdgeInsets.symmetric(
+              vertical: padding ?? paddingVertical ?? 0,
+              horizontal: padding ?? paddingHorizontal ?? 0),
+          child: child),
+    );
   }
 }

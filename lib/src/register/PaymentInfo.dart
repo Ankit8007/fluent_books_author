@@ -1,5 +1,6 @@
 import 'package:fluent_books_author/controller/AuthCtrl.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../CustomWidgets/Button.dart';
@@ -59,25 +60,43 @@ class _PaymentInfoState extends State<PaymentInfo> {
                               hint: emailAddress,
                               boxDeco: editTextDecoration(),
                               marginVertical: s20,
+                              inputType: TextInputType.emailAddress,
                               onChange: (String value) => authX.regData.payEmail = value,
                             ),
 
                             EditText(
                               hint: phoneNumber,
                               boxDeco: editTextDecoration() ,
+                              inputType: TextInputType.phone,
+                              maxLength: 13,
                               onChange: (String value) => authX.regData.payPhoneNo = value,
                             ),
 
 
 
-                            Button(
-                              label: next,
-                              labelStyle: txt_16_white,
-                              boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
-                              marginVertical: s40,
-                              ontap: (){
-                                Navigator.pushNamed(context, YourLanguage.routeName);
-                              },
+                            GetBuilder<AuthCtrl>(
+                              builder: (controller) {
+                                return Button(
+                                  label: next,
+                                  labelStyle: txt_16_white,
+                                  boxDeco: boxDecoration(color: blue, radius: s10, giveShadow: true),
+                                  marginVertical: s40,
+                                  isActive: authX.btnCtrl.payInfo,
+                                  ontap: (){
+                                    if(authX.btnCtrl.payInfo){
+                                      authX.payInfo((status,msg,error){
+                                        if(status){
+                                          Fluttertoast.showToast(msg: msg);
+                                          Navigator.pushNamed(context, YourLanguage.routeName);
+                                        }else{
+                                          Fluttertoast.showToast(msg: error);
+                                        }
+                                      });
+                                    }
+
+                                  },
+                                );
+                              }
                             ),
                           ],
                         ),

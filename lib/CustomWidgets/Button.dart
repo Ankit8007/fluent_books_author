@@ -17,6 +17,7 @@ class Button extends StatelessWidget {
       this.marginTop,
       this.marginLeft,
       this.marginRight,
+        this.isActive = true,
       this.marginBottom, this.paddingVertical, this.paddingHorizontal, this.paddingTop, this.paddingLeft, this.paddingRight, this.paddingBottom})
       : super(key: key);
   final GestureTapCallback? ontap;
@@ -38,6 +39,7 @@ class Button extends StatelessWidget {
   final double? paddingBottom;
   final BoxDecoration? boxDeco;
   final double? width;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +60,16 @@ class Button extends StatelessWidget {
             right: margin ?? marginHorizontal ?? marginRight ?? 0,
           ),
           decoration: boxDeco,
-          child: TextView(
+          child: isActive ? TextView(
             label.toUpperCase(),
             style: labelStyle,
             maxLines: 1,
             textAlign: TextAlign.center,
+          ) : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width : s15 * 2 , height: s15 * 2 ,child: const CircularProgressIndicator( color: Colors.white,strokeWidth: 1.5,)),
+            ],
           ),
         ));
   }

@@ -1,4 +1,5 @@
 import 'package:fluent_books_author/controller/AuthCtrl.dart';
+import 'package:fluent_books_author/src/ForgotPassword.dart';
 import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/register/ContactDetails.dart';
 import 'package:fluent_books_author/src/register/CreateAccount.dart';
@@ -60,11 +61,14 @@ class _LoginState extends State<Login> {
                         boxDeco: editTextDecoration(),
                         marginVertical: s20,
                         controller: authX.emailLogin,
+                        inputType: TextInputType.emailAddress,
                       ),
                       EditText(
                         hint: password,
                         boxDeco: editTextDecoration(),
                         controller: authX.passLogin,
+                        inputType: TextInputType.visiblePassword,
+                        secureText: true,
                       ),
                       Align(
                           alignment: Alignment.centerRight,
@@ -72,31 +76,32 @@ class _LoginState extends State<Login> {
                             forgotYourPassword_q,
                             marginVertical: s40,
                             style: txt_13_white_600_undr,
+                            onTap: ()=> Navigator.pushNamed(context, ForgotPassword.routeName),
                           )),
-                      Button(
+                      GetBuilder<AuthCtrl>(builder: (controller) => Button(
                         label: log_in,
                         labelStyle: txt_16_white,
+                        isActive: authX.btnCtrl.login,
                         boxDeco: boxDecoration(
                             color: blue, radius: s10, giveShadow: true),
                         ontap: () {
-                          authX.login((data) {
-                            if (!data) {
-                              authX.login((status,msg,error) {
-                                if(status){
-                                  Fluttertoast.showToast(msg: msg);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Fragment(),
-                                      ));
-                                }else{
-                                  Fluttertoast.showToast(msg: error);
-                                }
-                              });
-                            }
-                          });
+                          if(authX.btnCtrl.login){
+                            authX.login((status,msg,error) {
+                              if(status){
+                                Fluttertoast.showToast(msg: msg);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Fragment(),
+                                    ));
+                              }else{
+                                Fluttertoast.showToast(msg: error);
+                              }
+                            });
+                          }
                         },
-                      ),
+                      ),)
+                      ,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,

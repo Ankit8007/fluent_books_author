@@ -40,61 +40,63 @@ class _ChangePasswordState extends State<ChangePassword> {
                 backgroundColor: blue,
 
               ),
-              Expanded(child: Container(
-                padding: EdgeInsets.all(s15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              Expanded(child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(s15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                    Column(
-                      children: [
-                        EditCard(
-                          inputType: TextInputType.name,
-                          hint: 'Current Password',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                        EditCard(
-                          inputType: TextInputType.emailAddress,
-                          hint: 'New Password',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                        EditCard(
-                          inputType: TextInputType.phone,
-                          hint: 'Re-type New Password',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                      ],
-                    ),
+                      Column(
+                        children: [
+                          EditCard(
+                            inputType: TextInputType.name,
+                            hint: 'Current Password',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                          EditCard(
+                            inputType: TextInputType.emailAddress,
+                            hint: 'New Password',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                          EditCard(
+                            inputType: TextInputType.phone,
+                            hint: 'Re-type New Password',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                        ],
+                      ),
 
-                    Column(
-                      children: [
-                        Button(label: 'update password',
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(color: blue, radius: s10),
-                        ),
+                      Column(
+                        children: [
+                          Button(label: 'update password',
+                            labelStyle: txt_16_white,
+                            boxDeco: boxDecoration(color: blue, radius: s10),
+                          ),
 
-                        Button(label: 'cancel',
-                          labelStyle: txt_16_black,
-                          boxDeco: boxDecoration(borderColor: black, radius: s10),
-                        marginVertical: s15,
+                          Button(label: 'cancel',
+                            labelStyle: txt_16_black,
+                            boxDeco: boxDecoration(borderColor: black, radius: s10),
+                          marginVertical: s15,
 
-                        ),
+                          ),
 
-                        TextView(forgotYourPassword_q, style: txt_14_black,),
+                          TextView(forgotYourPassword_q, style: txt_14_black,),
 
-                      ],
-                    )
-
-
-
+                        ],
+                      )
 
 
 
 
 
 
-                  ],
+
+
+
+                    ],
+                  ),
                 ),
               ))
             ],

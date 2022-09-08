@@ -2,7 +2,11 @@ class Urls{
   static const String webUrl = 'https://www.algowid.net/fluent_page/author.html';
   static const String index = 'index.php?';
 }
+// Update Languages API
+// https://www.algowid.net/fluent/api/index.php?act=updateLang&authid=1&lang1=8&lang2=6&lang3=4
 
+// Time Slots API
+// https://www.algowid.net/fluent/api/index.php?act=timeList
 
-// index.php?act=otpVerify&authid=1&otp=6036  //OTP Verify API
-// index.php?act=updateName&authid=1&fname=Garry&lname=Singh //Update Name API
+// Update Interview Request API
+// https://www.algowid.net/fluent/api/index.php?act=updateInterview&authid=1&dt=2022-09-25&slot=10:00

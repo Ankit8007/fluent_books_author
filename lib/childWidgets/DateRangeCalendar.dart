@@ -7,7 +7,8 @@ import '../component/fonts.dart';
 import '../component/size.dart';
 
 class DateRangeCalendar extends StatelessWidget {
-  const DateRangeCalendar({Key? key}) : super(key: key);
+  const DateRangeCalendar({Key? key, this.onChangeSelection}) : super(key: key);
+  final onChangeSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +86,4 @@ class DateRangeCalendar extends StatelessWidget {
   }
 }
 
-onChangeSelection(DateRangePickerSelectionChangedArgs args){
-  print(args.value);
-}
+

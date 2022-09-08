@@ -40,70 +40,72 @@ class _AccountDetailsState extends State<AccountDetails> {
                 backgroundColor: blue,
 
               ),
-              Expanded(child: Container(
-                padding: EdgeInsets.all(s15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              Expanded(child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(s15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
 
-                    Column(
-                      children: [
-                        EditCard(
-                          label: 'Bank Account Number',
-                          inputType: TextInputType.name,
-                          hint: '',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                        EditCard(
-                          label: 'Bank Name',
-                          inputType: TextInputType.emailAddress,
-                          hint: '',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                        EditCard(
-                          label: 'SWIFT Code',
-                          inputType: TextInputType.emailAddress,
-                          hint: '',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                        EditCard(
-                          label: 'Branch',
-                          inputType: TextInputType.phone,
-                          hint: '',
-                          txtCtrl: TextEditingController(text: ''),
-                        ),
-                      ],
-                    ),
-
-
-
-                    Column(
-                      children: [
-                        Button(label: 'save',
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(color: blue, radius: s10),
-                        ),
-
-                        Button(label: 'cancel',
-                          labelStyle: txt_16_black,
-                          boxDeco: boxDecoration(borderColor: black, radius: s10),
-                          marginVertical: s15,
-
-                        ),
-                      ],
-                    )
+                      Column(
+                        children: [
+                          EditCard(
+                            label: 'Bank Account Number',
+                            inputType: TextInputType.name,
+                            hint: '',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                          EditCard(
+                            label: 'Bank Name',
+                            inputType: TextInputType.emailAddress,
+                            hint: '',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                          EditCard(
+                            label: 'SWIFT Code',
+                            inputType: TextInputType.emailAddress,
+                            hint: '',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                          EditCard(
+                            label: 'Branch',
+                            inputType: TextInputType.phone,
+                            hint: '',
+                            txtCtrl: TextEditingController(text: ''),
+                          ),
+                        ],
+                      ),
 
 
 
+                      Column(
+                        children: [
+                          Button(label: 'save',
+                            labelStyle: txt_16_white,
+                            boxDeco: boxDecoration(color: blue, radius: s10),
+                          ),
 
+                          Button(label: 'cancel',
+                            labelStyle: txt_16_black,
+                            boxDeco: boxDecoration(borderColor: black, radius: s10),
+                            marginVertical: s15,
+
+                          ),
+                        ],
+                      )
 
 
 
 
 
-                  ],
+
+
+
+
+                    ],
+                  ),
                 ),
               ))
             ],

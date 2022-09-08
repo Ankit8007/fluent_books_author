@@ -59,6 +59,7 @@ class _AddAddressState extends State<AddAddress> {
 
                         EditText(
                           hint: address,
+                          inputType: TextInputType.streetAddress,
                           boxDeco: editTextDecoration(),
                           marginVertical: s20,
                           onChange: (String value) =>
@@ -67,6 +68,7 @@ class _AddAddressState extends State<AddAddress> {
 
                         EditText(
                           hint: city,
+                          inputType: TextInputType.name,
                           boxDeco: editTextDecoration(),
                           onChange: (String value) =>
                               authX.regData.addressDetail.city = value,
@@ -76,6 +78,7 @@ class _AddAddressState extends State<AddAddress> {
                           hint: state,
                           boxDeco: editTextDecoration(),
                           marginVertical: s20,
+                          inputType: TextInputType.name,
                           onChange: (String value) =>
                               authX.regData.addressDetail.state = value,
                         ),
@@ -83,6 +86,7 @@ class _AddAddressState extends State<AddAddress> {
                         EditText(
                             hint: zipCode,
                             boxDeco: editTextDecoration(),
+                            inputType: TextInputType.number,
                             onChange: (String value) =>
                                 authX.regData.addressDetail.zipCode = value),
 
@@ -90,25 +94,33 @@ class _AddAddressState extends State<AddAddress> {
                             hint: country,
                             boxDeco: editTextDecoration(),
                             marginVertical: s20,
+                            inputType: TextInputType.name,
                             onChange: (String value) =>
                                 authX.regData.addressDetail.country = value),
 
-                        Button(
-                          label: next,
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(
-                              color: blue, radius: s10, giveShadow: true),
-                          marginVertical: s40,
-                          ontap: () {
-                            authX.updateAddress((status,msg,error){
-                              if(status){
-                                Fluttertoast.showToast(msg: msg);
-                                Navigator.pushNamed(context, PaymentInfo.routeName);
-                              }else{
-                                Fluttertoast.showToast(msg: error);
-                              }
-                            });
-                          },
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                              label: next,
+                              labelStyle: txt_16_white,
+                              boxDeco: boxDecoration(
+                                  color: blue, radius: s10, giveShadow: true),
+                              marginVertical: s40,
+                              isActive: authX.btnCtrl.address,
+                              ontap: () {
+                                if(authX.btnCtrl.address){
+                                  authX.updateAddress((status,msg,error){
+                                    if(status){
+                                      Fluttertoast.showToast(msg: msg);
+                                      Navigator.pushNamed(context, PaymentInfo.routeName);
+                                    }else{
+                                      Fluttertoast.showToast(msg: error);
+                                    }
+                                  });
+                                }
+                              },
+                            );
+                          }
                         ),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.center,

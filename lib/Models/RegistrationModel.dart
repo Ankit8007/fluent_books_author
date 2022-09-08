@@ -1,3 +1,5 @@
+import 'package:fluent_books_author/Models/DropMenuModel.dart';
+
 import 'MapModel.dart';
 
 class RegistrationModel {
@@ -15,7 +17,11 @@ class RegistrationModel {
   List<String> docList;
   String meetDate;
   String meetTime;
+  int? selectedSlot;
   String otp;
+  DropMenuModel? primaryLang;
+  DropMenuModel? secondaryLang;
+  DropMenuModel? tertiaryLang;
 
   RegistrationModel({
     this.email = '',
@@ -33,6 +39,10 @@ class RegistrationModel {
     this.meetDate = '',
     this.meetTime = '',
     this.otp = '',
+    this.primaryLang,
+    this.secondaryLang,
+    this.tertiaryLang,
+    this.selectedSlot
   });
 }
 

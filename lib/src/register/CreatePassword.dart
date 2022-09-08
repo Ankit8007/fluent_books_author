@@ -55,6 +55,9 @@ class _CreatePasswordState extends State<CreatePassword> {
                           boxDeco: editTextDecoration(),
                           marginVertical: s20,
                           controller: passCtrl,
+                          inputType: TextInputType.visiblePassword,
+                          secureText: true,
+                          maxLength: 25,
                           onChange: (String value) => authX.regData.password = value,
                         ),
 
@@ -62,25 +65,34 @@ class _CreatePasswordState extends State<CreatePassword> {
                           hint: confirmPassword,
                           boxDeco: editTextDecoration() ,
                           controller: confirmCtrl,
+                          inputType: TextInputType.visiblePassword,
+                          secureText: true,
+                          maxLength: 25,
                           onChange: (String value) => authX.regData.rePassword = value,
                         ),
 
-                        Button(
-                          label: next,
-                          labelStyle: txt_16_white,
-                          boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
-                          marginVertical: s40,
-                          ontap: (){
-                            authX.updatePassword((status,msg,error){
-                              if(status){
-                                Fluttertoast.showToast(msg: msg);
-                                Navigator.pushNamed(context, AuthorBlurb.routeName);
-                              }else{
-                                Fluttertoast.showToast(msg: error);
-                              }
-                            });
-
-                          },
+                        GetBuilder<AuthCtrl>(
+                          builder: (controller) {
+                            return Button(
+                              label: next,
+                              labelStyle: txt_16_white,
+                              boxDeco: boxDecoration(color: blue, radius: s10,giveShadow: true),
+                              marginVertical: s40,
+                              isActive: authX.btnCtrl.password,
+                              ontap: (){
+                                if(authX.btnCtrl.password){
+                                  authX.updatePassword((status,msg,error){
+                                    if(status){
+                                      Fluttertoast.showToast(msg: msg);
+                                      Navigator.pushNamed(context, AuthorBlurb.routeName);
+                                    }else{
+                                      Fluttertoast.showToast(msg: error);
+                                    }
+                                  });
+                                }
+                              },
+                            );
+                          }
                         ),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.center,

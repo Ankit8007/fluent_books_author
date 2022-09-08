@@ -66,83 +66,85 @@ class _CreateBookState extends State<CreateBook> {
                 backgroundColor: blue,
               ),
               Expanded(
-                  child: Column(
-                children: [
-                  Container(
-                    height: 300,
-                    width: 250,
-                    margin: EdgeInsets.only(top: s20 * 2),
-                    decoration: boxDecoration(
-                      borderColor: blue,
-                      radius: s10,
-                    ),
+                  child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ImageView(
-                          Img.uploadIcon,
-                          size: s10 * 4,
-                          fit: BoxFit.contain,
-                          marginBottom: s15,
-                        ),
-                        TextView(
-                          'Upload your book cover page\n Size : 210 X 297mm',
-                          textAlign: TextAlign.center,
-                          style: txt_10_black,
-                        )
-                      ],
+                children: [
+                    Container(
+                      height: 300,
+                      width: 250,
+                      margin: EdgeInsets.only(top: s20 * 2),
+                      decoration: boxDecoration(
+                        borderColor: blue,
+                        radius: s10,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ImageView(
+                            Img.uploadIcon,
+                            size: s10 * 4,
+                            fit: BoxFit.contain,
+                            marginBottom: s15,
+                          ),
+                          TextView(
+                            'Upload your book cover page\n Size : 210 X 297mm',
+                            textAlign: TextAlign.center,
+                            style: txt_10_black,
+                          )
+                        ],
+                      ),
                     ),
-                  ),
 
-                  //TextView('Free or Paid Type\n Category', style: txt_12_black_600,marginTop: s20 * 2,),
-                  DropDown(
-                    marginHorizontal: s40,
-                    marginTop: s40,
-                    boxDeco: boxDecoration(
-                        color: white, radius: s10, giveShadow: true),
-                    hint:'Subscription Type',
-                    list: bookSubscriptionList,
-                    value: bookSubscriptionType,
-                    onChange: (String? newValue) {
-                      setState(() {
-                        bookSubscriptionType = newValue!;
-                      });
-                    },
-                  ),
+                    //TextView('Free or Paid Type\n Category', style: txt_12_black_600,marginTop: s20 * 2,),
+                    DropDown(
+                      marginHorizontal: s40,
+                      marginTop: s40,
+                      boxDeco: boxDecoration(
+                          color: white, radius: s10, giveShadow: true),
+                      hint:'Subscription Type',
+                      // list: bookSubscriptionList,
+                      // value: bookSubscriptionType,
+                      onChange: (String? newValue) {
+                        setState(() {
+                          bookSubscriptionType = newValue!;
+                        });
+                      },
+                    ),
 
 
-                  // DropDown(
-                  //   marginHorizontal: s40,
-                  //   marginTop: s40,
-                  //   boxDeco: boxDecoration(
-                  //       color: white, radius: s10, giveShadow: true),
-                  //   hint: 'Select Category Type',
-                  //   list: bookCatTypeList,
-                  //   value: bookCatType,
-                  //   onChange: (String? newValue) {
-                  //     setState(() {
-                  //       bookCatType = newValue!;
-                  //     });
-                  //   },
-                  // ),
+                    // DropDown(
+                    //   marginHorizontal: s40,
+                    //   marginTop: s40,
+                    //   boxDeco: boxDecoration(
+                    //       color: white, radius: s10, giveShadow: true),
+                    //   hint: 'Select Category Type',
+                    //   list: bookCatTypeList,
+                    //   value: bookCatType,
+                    //   onChange: (String? newValue) {
+                    //     setState(() {
+                    //       bookCatType = newValue!;
+                    //     });
+                    //   },
+                    // ),
 
-                  DropDown(
-                    marginHorizontal: s40,
-                    marginTop: s40,
-                    boxDeco: boxDecoration(
-                        color: white, radius: s10, giveShadow: true),
-                    hint: 'Select Category Type',
-                    list: bookCatTypeList,
-                    value: bookCatType,
-                    onChange: (String? newValue) {
-                      setState(() {
-                        bookCatType = newValue!;
-                      });
-                    },
-                  ),
+                    DropDown(
+                      marginHorizontal: s40,
+                      marginTop: s40,
+                      boxDeco: boxDecoration(
+                          color: white, radius: s10, giveShadow: true),
+                      hint: 'Select Category Type',
+                      // list: bookCatTypeList,
+                      // value: bookCatType,
+                      onChange: (String? newValue) {
+                        setState(() {
+                          bookCatType = newValue!;
+                        });
+                      },
+                    ),
                 ],
-              )),
+              ),
+                  )),
               Container(
                 color: blue,
                 child: Button(
