@@ -15,7 +15,7 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-
+//step":5
 class AuthorBlurb extends StatefulWidget {
   const AuthorBlurb({Key? key}) : super(key: key);
   static const String routeName = 'AuthorBlurb';

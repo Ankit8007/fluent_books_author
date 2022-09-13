@@ -3,6 +3,7 @@ import 'package:fluent_books_author/Models/InterviewTimeModel.dart';
 import 'package:fluent_books_author/Models/SlotModel.dart';
 import 'package:fluent_books_author/childWidgets/ChipCard.dart';
 import 'package:fluent_books_author/controller/AuthCtrl.dart';
+import 'package:fluent_books_author/src/Fragment.dart';
 import 'package:fluent_books_author/src/register/UnderReview.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -25,6 +26,7 @@ import '../../component/size.dart';
 import 'QualificationDoc.dart';
 import 'VerifyOTP.dart';
 
+//step":11
 class SetupInterview extends StatefulWidget {
   const SetupInterview({Key? key}) : super(key: key);
   static const String routeName = 'SetupInterview';
@@ -182,8 +184,14 @@ class _SetupInterviewState extends State<SetupInterview> {
                                       authX.interviewRequest((status,msg,error){
                                         if(status){
                                           Fluttertoast.showToast(msg: msg);
+                                          String routeName = '';
+                                          if(authX.stepType == 'login'){
+                                            routeName = Fragment.routeName;
+                                          }else{
+                                            routeName = UnderReview.routeName;
+                                          }
                                           Navigator.pushNamed(
-                                              context, UnderReview.routeName);
+                                              context, routeName);
                                         }else{
                                           Fluttertoast.showToast(msg: error);
                                         }

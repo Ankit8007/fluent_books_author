@@ -17,6 +17,7 @@ import '../../component/img.dart';
 import '../../component/size.dart';
 import 'AddAddress.dart';
 
+//step":4
 class CreatePassword extends StatefulWidget {
   const CreatePassword({Key? key}) : super(key: key);
   static const String routeName = 'CreatePassword';

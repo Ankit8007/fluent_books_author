@@ -16,7 +16,7 @@ import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
 import 'YourLanguage.dart';
-
+//step":8
 class PaymentInfo extends StatefulWidget {
   const PaymentInfo({Key? key}) : super(key: key);
   static const String routeName = 'PaymentInfo';

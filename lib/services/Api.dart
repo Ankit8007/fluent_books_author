@@ -33,6 +33,7 @@ getMethod({required String url, var callBack}) async {
   var uri = Uri.parse(baseUrl + url);
   try {
     var res = await http.get(uri, headers: headers);
+    print(res.body);
     callBack(res.statusCode, res.body, null);
   } on SocketException {
     callBack(101, null, 'No internet connection');

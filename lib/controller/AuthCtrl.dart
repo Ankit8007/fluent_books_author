@@ -25,6 +25,7 @@ class AuthCtrl extends GetxController {
   final List<DropMenuModel> langLabel2 = [];
   final List<DropMenuModel> langLabel3 = [];
   final List<SlotModel> mainSlotList = [];
+  String stepType = '';
 
   login(callBack) async {
     if (isEmail(emailLogin.text) && isPassword(passLogin.text)) {
@@ -36,11 +37,46 @@ class AuthCtrl extends GetxController {
           url: url,
           callBack: (status, body, error) {
             if (body != null) {
+              print(body);
+
+            //   {
+            //     "status":"success",
+            // "userid":"17",
+            // "fname":"email1",
+            // "email":"email.1@gmail.com",
+            // "proPic":"https:\/\/algowid.net\/fluent\/api\/files\/profile\/a956cf04ebb424c4c63663aea02b5df1.jpg",
+            // "steps":"6",
+            // "msg":"Logged in Successfully.",
+            // "error":[
+            // "Logged in Successfully."
+            // ]
+            // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               if (status == 200) {
                 Map<String, dynamic> data = jsonDecode(body);
                 var msg = data['error'][0];
                 if (data['status'] == 'success') {
-                  callBack(true, msg, null);
+                  Map<String,dynamic> map = {
+                    'msg':msg,
+                    'step': data['steps'],
+                  };
+
+                  callBack(true, map, null);
                 } else {
                   callBack(false, null, msg);
                 }
@@ -72,6 +108,7 @@ class AuthCtrl extends GetxController {
           url: url,
           callBack: (statusCode, body, error) {
             if (body != null) {
+
               Map<String, dynamic> data = jsonDecode(body);
               var status = data['status'];
               if (statusCode == 200) {

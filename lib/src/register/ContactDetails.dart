@@ -17,6 +17,10 @@ import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
 
+
+
+//step":1
+
 class ContactDetails extends StatefulWidget {
   const ContactDetails({Key? key}) : super(key: key);
   static const String routeName = 'ContactDetails';
@@ -80,6 +84,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                             isActive: authX.btnCtrl.contDetail,
                             ontap: (){
                               if(authX.btnCtrl.contDetail){
+                                authX.stepType = 'signup';
                                 authX.register((status,msg,error) {
                                   print('got status......$status');
                                   if(status){

@@ -15,7 +15,7 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
-
+//step":7
 class AddAddress extends StatefulWidget {
   const AddAddress({Key? key}) : super(key: key);
   static const String routeName = 'AddAddress';

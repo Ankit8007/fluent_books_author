@@ -15,6 +15,7 @@ import '../../component/decoration.dart';
 import '../../component/fonts.dart';
 import '../../component/img.dart';
 import '../../component/size.dart';
+//step":2
 
 class VerifyOTP extends StatefulWidget {
   const VerifyOTP({Key? key}) : super(key: key);
